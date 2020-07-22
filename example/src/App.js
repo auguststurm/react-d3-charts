@@ -1,7 +1,7 @@
 import React from 'react'
 
-// import { ExampleComponent } from '@auguststurm/react-d3-charts'
-// import '@auguststurm/react-d3-charts/dist/index.css'
+import '@auguststurm/react-d3-charts/dist/index.css';
+import './App.sass';
 
 import { BarChart } from '@auguststurm/react-d3-charts';
 
