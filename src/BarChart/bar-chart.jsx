@@ -19,8 +19,8 @@ const BarChart = ({width, height, margin, data}) => {
     const viz = svg.append("g")
                   .attr('class', 'barChart__viz');
 
-    buildChart(viz);
-    buildAxes(viz);
+    plotChart(viz);
+    plotdAxes(viz);
   });
 
 
@@ -37,7 +37,7 @@ const BarChart = ({width, height, margin, data}) => {
                   .range([height - (margin.top + margin.bottom), margin.top]);
 
 
-  const buildAxes = (viz) => {
+  const plotdAxes = (viz) => {
 
     const xAxis = d3.axisBottom(xScale).tickFormat(i => data[i].name).tickSizeOuter(0);
 
@@ -52,7 +52,11 @@ const BarChart = ({width, height, margin, data}) => {
       .call(yAxis)
   };
 
-  const buildChart = (viz) => {};
+  const plotChart = (viz) => {
+
+
+
+  };
 
   return(
     <div className="barChart">
