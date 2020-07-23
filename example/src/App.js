@@ -13,18 +13,20 @@ class App extends React.Component {
 
     this.state = {
       barchart: {
-        width: 450,
-        height: 175,
+        width: 850,
+        height: 275,
         margin: {
-          top: 30,
-          right: 0,
-          bottom: 30,
-          left: 40
+          top: 10,
+          right: 10,
+          bottom: 15,
+          left: 35
         },
         data: [
           { name: 'alpha', value: 1.0 },
           { name: 'bravo', value: 2.0 },
-          { name: 'charlie', value: 3.0}
+          { name: 'charlie', value: 3.0},
+          { name: 'delta', value: 4.0},
+          { name: 'echo', value: 5.0},
         ]
       }
     }
