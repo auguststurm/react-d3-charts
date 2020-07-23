@@ -49,11 +49,24 @@ const BarChart = ({width, height, margin, data}) => {
 
     viz.append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
-      .call(yAxis)
+      .call(yAxis);
   };
 
   const plotChart = (viz) => {
 
+    viz.selectAll('rect')
+      .data(data)
+      .enter()
+      .append('rect')
+      .attr('x', (datum, index) => {
+        return xScale(index)
+      })
+      .attr('y', (datum, index) => {
+        return yScale(datum.value);
+      })
+      .attr('width', xScale.bandwidth())
+      .attr('height', datum => yScale(datum.value))
+      .attr('fill', (datum) => colorScale(datum.name))
 
 
   };
