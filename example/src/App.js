@@ -6,6 +6,7 @@ import './App.sass';
 import {
   BarChart,
   PieChart,
+  LineChart
 } from '@auguststurm/react-d3-charts';
 
 
@@ -33,7 +34,7 @@ class App extends React.Component {
         ]
       },
       pieChart: {
-        diameter: 450,
+        diameter: 300,
         innerRadius: 0.618,
         labelSize: 11,
         data: [
@@ -67,21 +68,27 @@ class App extends React.Component {
 
       <div className="example">
 
-        <h1>BarChart</h1>
-        <BarChart
-          width={this.state.barChart.width}
-          height={this.state.barChart.height}
-          margin={this.state.barChart.margin}
-          data={this.state.barChart.data}
+        <h1>Examples</h1>
+
+        <h2>LineChart</h2>
+        <LineChart
+
         />
 
-        <h1>PieChart</h1>
+        <h2>PieChart</h2>
         <PieChart
           diameter={this.state.pieChart.diameter}
           innerRadius={this.state.pieChart.innerRadius}
           labelSize={this.state.pieChart.labelSize}
           data={this.state.pieChart.data}
+        />
 
+        <h2>BarChart</h2>
+        <BarChart
+          width={this.state.barChart.width}
+          height={this.state.barChart.height}
+          margin={this.state.barChart.margin}
+          data={this.state.barChart.data}
         />
 
       </div>
