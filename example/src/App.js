@@ -67,6 +67,7 @@ class App extends React.Component {
           bottom: 20,
           left: 35
         },
+        dateFormat: 'YYYY-MM-DD',
         data: [
           {date: '2007-04-23', value: 93.24},
           {date: '2007-04-24', value: 95.35},
@@ -127,6 +128,7 @@ class App extends React.Component {
           width={this.state.lineChart.width}
           height={this.state.lineChart.height}
           margin={this.state.lineChart.margin}
+          dateFormat={this.state.lineChart.dateFormat}
           data={this.state.lineChart.data}
         />
 
