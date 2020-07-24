@@ -33,8 +33,8 @@ class App extends React.Component {
         ]
       },
       pieChart: {
-        diameter: 500,
-        innerRadius: 0,
+        diameter: 450,
+        innerRadius: 0.618,
         labelSize: 11,
         data: [
           {name: "<5", value: 19912018},
