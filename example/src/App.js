@@ -16,9 +16,9 @@ class App extends React.Component {
         width: 850,
         height: 275,
         margin: {
-          top: 10,
+          top: 15,
           right: 10,
-          bottom: 15,
+          bottom: 20,
           left: 35
         },
         data: [
@@ -40,7 +40,6 @@ class App extends React.Component {
       <div className="example">
 
         <h1>BarChart</h1>
-
         <BarChart
           width={this.state.barchart.width}
           height={this.state.barchart.height}
@@ -49,12 +48,9 @@ class App extends React.Component {
         />
 
       </div>
-
     )
 
   }
-
 }
-
 
 export default App

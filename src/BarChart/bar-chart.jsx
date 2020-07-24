@@ -1,31 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import './bar-chart.sass';
+import styles from './bar-chart.sass';
 
-/*
- Adapted from experience and: https://observablehq.com/@d3/bar-chart
-*/
+// Adapted from experience and: https://observablehq.com/@d3/bar-chart
 
 const BarChart = ({width, height, margin, data}) => {
 
   const chartRef = useRef(null);
 
-
   useEffect(() => {
-
     const svg = d3.select(chartRef.current);
     svg.selectAll("*").remove();
-
-    const viz = svg.append("g")
-                  .attr('class', 'barChart__viz');
-
-    plotChart(viz);
-    plotdAxes(viz);
+    plotChart(svg);
+    plotdAxes(svg);
   });
 
-
   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-
 
   const xScale = d3.scaleBand()
                   .domain(d3.range(data.length))
@@ -34,30 +24,29 @@ const BarChart = ({width, height, margin, data}) => {
 
   const yScale = d3.scaleLinear()
                   .domain([0, d3.max(data, d => d.value)])
-                  .range([height - (margin.top + margin.bottom), margin.top]);
+                  .range([height - margin.bottom, margin.top]);
 
 
-  const plotdAxes = (viz) => {
+  const plotdAxes = (svg) => {
 
     const xAxis = d3.axisBottom(xScale).tickFormat(i => data[i].name).tickSizeOuter(0);
-
-    viz.append('g')
-      .attr('transform', `translate(0, ${height - (margin.top + margin.bottom)})`)
+    svg.append('g')
+      .attr('transform', `translate(0, ${height - margin.bottom})`)
       .call(xAxis);
 
     const yAxis = d3.axisLeft(yScale);
-
-    viz.append('g')
+    svg.append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
       .call(yAxis);
   };
 
-  const plotChart = (viz) => {
+  const plotChart = (svg) => {
 
-    viz.selectAll('rect')
+    svg.selectAll('rect')
       .data(data)
       .enter()
       .append('rect')
+      .attr('class', 'barChart__viz--bar')
       .attr('x', (datum, index) => {
         return xScale(index)
       })
@@ -65,18 +54,16 @@ const BarChart = ({width, height, margin, data}) => {
         return yScale(datum.value);
       })
       .attr('width', xScale.bandwidth())
-      .attr('height', datum => yScale(datum.value))
-      .attr('fill', (datum) => colorScale(datum.name))
-
-
+      .attr('height', datum => yScale(0) - yScale(datum.value))
+      .attr('fill', (datum) => colorScale(datum.name));
   };
 
   return(
-    <div className="barChart">
+    <div className='barChart'>
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}
-        preserveAspectRatio="xMinYMin meet"
+        preserveAspectRatio='xMinYMin meet'
         width={width}
         height={height}
         ref={chartRef}
