@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import './bar-chart.sass';
 
-// Adapted from experience and: https://observablehq.com/@d3/bar-chart
+// Source: https://observablehq.com/@d3/bar-chart
 
 const BarChart = ({width, height, margin, data}) => {
 
@@ -63,7 +63,6 @@ const BarChart = ({width, height, margin, data}) => {
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}
-        preserveAspectRatio='xMinYMin meet'
         width={width}
         height={height}
         ref={chartRef}

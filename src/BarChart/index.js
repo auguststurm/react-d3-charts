@@ -1,1 +1,1 @@
-export { default } from './bar-chart';
+export { default } from './bar-chart.jsx';
