@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import styles from './bar-chart.sass';
+import './bar-chart.sass';
 
 // Adapted from experience and: https://observablehq.com/@d3/bar-chart
 
