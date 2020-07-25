@@ -6,11 +6,13 @@ import './App.sass';
 import dataBarChart from './data/data_bar.js';
 import dataPieChart from './data/data_pie.js';
 import dataLineChart from './data/data_line.js';
+import dataHexbinChart from './data/data_hexbin.js';
 
 import {
   BarChart,
   PieChart,
-  LineChart
+  LineChart,
+  HexbinChart
 } from '@auguststurm/react-d3-charts';
 
 
@@ -39,7 +41,7 @@ class App extends React.Component {
       },
       lineChart: {
         width: 900,
-        height: 305,
+        height: 300,
         margin: {
           top: 15,
           right: 0,
@@ -48,6 +50,18 @@ class App extends React.Component {
         },
         dateFormat: 'YYYY-MM-DD',
         data: dataLineChart
+      },
+      hexbinChart: {
+        width: 800,
+        height: 500,
+        margin: {
+          top: 20,
+          right: 20,
+          bottom: 30,
+          left: 40
+        },
+        radius: 5,
+        data: dataHexbinChart
       }
     }
 
@@ -60,6 +74,15 @@ class App extends React.Component {
       <div className="example">
 
         <h1>Examples</h1>
+
+        <h2>HexbinChart</h2>
+        <HexbinChart
+          width={this.state.hexbinChart.width}
+          height={this.state.hexbinChart.height}
+          margin={this.state.hexbinChart.margin}
+          radius={this.state.hexbinChart.radius}
+          data={this.state.hexbinChart.data}
+        />
 
         <h2>LineChart</h2>
         <LineChart
