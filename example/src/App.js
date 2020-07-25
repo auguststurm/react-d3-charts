@@ -10,6 +10,7 @@ import dataHexbinChart from './data/data_hexbin.js';
 
 import {
   BarChart,
+  BarChartHorizontal,
   PieChart,
   LineChart,
   HexbinChart
@@ -30,6 +31,17 @@ class App extends React.Component {
           right: 0,
           bottom: 20,
           left: 35
+        },
+        data: dataBarChart
+      },
+      barChartHorizontal: {
+        width: 850,
+        barHeight: 16,
+        margin: {
+          top: 30,
+          right: 0,
+          bottom: 10,
+          left: 30
         },
         data: dataBarChart
       },
@@ -99,6 +111,14 @@ class App extends React.Component {
           innerRadius={this.state.pieChart.innerRadius}
           labelSize={this.state.pieChart.labelSize}
           data={this.state.pieChart.data}
+        />
+
+        <h2>BarChartHorizontal</h2>
+        <BarChartHorizontal
+          width={this.state.barChartHorizontal.width}
+          barHeight={this.state.barChartHorizontal.barHeight}
+          margin={this.state.barChartHorizontal.margin}
+          data={this.state.barChartHorizontal.data}
         />
 
         <h2>BarChart</h2>

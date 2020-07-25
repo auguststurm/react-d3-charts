@@ -42,6 +42,7 @@ const BarChart = ({width, height, margin, data}) => {
 
   const plotChart = (svg) => {
 
+
     svg.selectAll('rect')
       .data(data)
       .enter()
@@ -56,6 +57,7 @@ const BarChart = ({width, height, margin, data}) => {
       .attr('width', xScale.bandwidth())
       .attr('height', datum => yScale(0) - yScale(datum.value))
       .attr('fill', (datum) => colorScale(datum.name));
+
   };
 
   return(
