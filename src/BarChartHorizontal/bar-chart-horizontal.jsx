@@ -5,8 +5,6 @@ import './bar-chart-horizontal.sass';
 
 const BarChartHorizontal = ({width, barHeight, margin, data}) => {
 
-  console.log(data);
-
   const chartRef = useRef(null);
 
   useEffect(() => {

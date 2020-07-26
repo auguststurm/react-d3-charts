@@ -7,13 +7,15 @@ import dataBarChart from './data/data_bar.js';
 import dataPieChart from './data/data_pie.js';
 import dataLineChart from './data/data_line.js';
 import dataHexbinChart from './data/data_hexbin.js';
+import dataMultiLineChart from './data/data_multiline.js';
 
 import {
   BarChart,
   BarChartHorizontal,
   PieChart,
   LineChart,
-  HexbinChart
+  HexbinChart,
+  MultiLineChart
 } from '@auguststurm/react-d3-charts';
 
 
@@ -63,6 +65,17 @@ class App extends React.Component {
         dateFormat: 'YYYY-MM-DD',
         data: dataLineChart
       },
+      multiLineChart: {
+        width: 900,
+        height: 300,
+        margin: {
+          top: 15,
+          right: 0,
+          bottom: 20,
+          left: 35
+        },
+        data: dataMultiLineChart
+      },
       hexbinChart: {
         width: 800,
         height: 500,
@@ -86,6 +99,14 @@ class App extends React.Component {
       <div className="example">
 
         <h1>Examples</h1>
+
+        <h2>MultiLineChart</h2>
+        <MultiLineChart
+          width={this.state.multiLineChart.width}
+          height={this.state.multiLineChart.height}
+          margin={this.state.multiLineChart.margin}
+          data={this.state.multiLineChart.data}
+        />
 
         <h2>HexbinChart</h2>
         <HexbinChart
