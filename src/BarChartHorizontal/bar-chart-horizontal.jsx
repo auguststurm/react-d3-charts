@@ -3,6 +3,8 @@ import * as d3 from 'd3';
 
 import './bar-chart-horizontal.sass';
 
+// https://observablehq.com/@d3/horizontal-bar-chart
+
 const BarChartHorizontal = ({width, barHeight, margin, data}) => {
 
   const chartRef = useRef(null);
