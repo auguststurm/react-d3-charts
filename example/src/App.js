@@ -17,7 +17,8 @@ import {
   LineChart,
   HexbinChart,
   MultiLineChart,
-  StackedBarChart
+  StackedBarChart,
+  StackedBarChartHorizontal
 } from '@auguststurm/react-d3-charts';
 
 
@@ -95,8 +96,19 @@ class App extends React.Component {
         height: 500,
         margin: {
           top: 10,
-          right: 10,
+          right: 0,
           bottom: 20,
+          left: 35
+        },
+        data: dataStackedBarChart
+      },
+      stackedBarChartHorizontal: {
+        width: 900,
+        barHeight: 16,
+        margin: {
+          top: 30,
+          right: 0,
+          bottom: 0,
           left: 35
         },
         data: dataStackedBarChart
@@ -112,6 +124,14 @@ class App extends React.Component {
       <div className="example">
 
         <h1>Examples</h1>
+
+        <h2>StackedBarChartHorizontal</h2>
+        <StackedBarChartHorizontal
+          width={this.state.stackedBarChartHorizontal.width}
+          barHeight={this.state.stackedBarChartHorizontal.barHeight}
+          margin={this.state.stackedBarChartHorizontal.margin}
+          data={this.state.stackedBarChartHorizontal.data}
+        />
 
         <h2>StackedBarChart</h2>
         <StackedBarChart

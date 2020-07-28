@@ -7,6 +7,7 @@ import LineChart from './LineChart';
 import HexbinChart from './HexbinChart';
 import MultiLineChart from './MultiLineChart';
 import StackedBarChart from './StackedBarChart';
+import StackedBarChartHorizontal from './StackedBarChartHorizontal';
 
 export {
   BarChart,
@@ -15,5 +16,6 @@ export {
   LineChart,
   HexbinChart,
   MultiLineChart,
-  StackedBarChart
+  StackedBarChart,
+  StackedBarChartHorizontal
 }
