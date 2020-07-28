@@ -8,6 +8,7 @@ import dataPieChart from './data/data_pie.js';
 import dataLineChart from './data/data_line.js';
 import dataHexbinChart from './data/data_hexbin.js';
 import dataMultiLineChart from './data/data_multiline.js';
+import dataStackedBarChart from './data/data_stackedBar.js';
 
 import {
   BarChart,
@@ -15,7 +16,8 @@ import {
   PieChart,
   LineChart,
   HexbinChart,
-  MultiLineChart
+  MultiLineChart,
+  StackedBarChart
 } from '@auguststurm/react-d3-charts';
 
 
@@ -87,6 +89,17 @@ class App extends React.Component {
         },
         radius: 5,
         data: dataHexbinChart
+      },
+      stackedBarChart: {
+        width: 900,
+        height: 500,
+        margin: {
+          top: 10,
+          right: 10,
+          bottom: 20,
+          left: 35
+        },
+        data: dataStackedBarChart
       }
     }
 
@@ -99,6 +112,14 @@ class App extends React.Component {
       <div className="example">
 
         <h1>Examples</h1>
+
+        <h2>StackedBarChart</h2>
+        <StackedBarChart
+          width={this.state.stackedBarChart.width}
+          height={this.state.stackedBarChart.height}
+          margin={this.state.stackedBarChart.margin}
+          data={this.state.stackedBarChart.data}
+        />
 
         <h2>MultiLineChart</h2>
         <MultiLineChart

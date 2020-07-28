@@ -6,6 +6,7 @@ import PieChart from './PieChart';
 import LineChart from './LineChart';
 import HexbinChart from './HexbinChart';
 import MultiLineChart from './MultiLineChart';
+import StackedBarChart from './StackedBarChart';
 
 export {
   BarChart,
@@ -13,5 +14,6 @@ export {
   PieChart,
   LineChart,
   HexbinChart,
-  MultiLineChart
+  MultiLineChart,
+  StackedBarChart
 }
