@@ -123,7 +123,7 @@ class App extends React.Component {
 
       <div className="example">
 
-        <h1>Examples</h1>
+        <h1>Examples ({Object.keys(this.state).length})</h1>
 
         <h2>StackedBarChartHorizontal</h2>
         <StackedBarChartHorizontal
