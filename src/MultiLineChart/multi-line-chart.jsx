@@ -80,8 +80,9 @@ const MultiLineChart = ({width, height, margin, data}) => {
       const dot = svg.append('g')
           .attr('display', 'none');
 
-      dot.append("circle")
-          .attr("r", 2.5);
+      dot.append('circle')
+          .attr('r', 3)
+          .attr('fill', 'red');
 
       dot.append('text')
           .attr('font-family', 'sans-serif')
