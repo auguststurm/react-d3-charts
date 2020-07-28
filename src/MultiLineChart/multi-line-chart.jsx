@@ -69,25 +69,25 @@ const MultiLineChart = ({width, height, margin, data}) => {
 
       if ("ontouchstart" in document) svg
           .style("-webkit-tap-highlight-color", "transparent")
-          .on("touchmove", moved)
-          .on("touchstart", entered)
-          .on("touchend", left)
+          .on('touchmove', moved)
+          .on('touchstart', entered)
+          .on('touchend', left)
       else svg
-          .on("mousemove", moved)
-          .on("mouseenter", entered)
-          .on("mouseleave", left);
+          .on('mousemove', moved)
+          .on('mouseenter', entered)
+          .on('mouseleave', left);
 
-      const dot = svg.append("g")
-          .attr("display", "none");
+      const dot = svg.append('g')
+          .attr('display', 'none');
 
       dot.append("circle")
           .attr("r", 2.5);
 
-      dot.append("text")
-          .attr("font-family", "sans-serif")
-          .attr("font-size", 10)
-          .attr("text-anchor", "middle")
-          .attr("y", -8);
+      dot.append('text')
+          .attr('font-family', 'sans-serif')
+          .attr('font-size', 10)
+          .attr('text-anchor', 'middle')
+          .attr('y', -8);
 
       function moved() {
         d3.event.preventDefault();
@@ -100,23 +100,23 @@ const MultiLineChart = ({width, height, margin, data}) => {
         const i = xm - moment(data.dates[i0]).toDate() > moment(data.dates[i1]).toDate() - xm ? i1 : i0;
         const s = least(data.series, d => Math.abs(d.values[i] - ym));
 
-        path.attr("stroke", d => d === s ? null : "#ddd").filter(d => d === s).raise();
+        path.attr('stroke', d => d === s ? null : '#ddd').filter(d => d === s).raise();
 
         const xPosDateString = data.dates[i];
         const xPosDateObject = moment(xPosDateString).toDate();
 
-        dot.attr("transform", `translate(${xScale(xPosDateObject)},${yScale(s.values[i])})`);
-        dot.select("text").text(s.name);
+        dot.attr('transform', `translate(${xScale(xPosDateObject)},${yScale(s.values[i])})`);
+        dot.select('text').text(s.name);
       }
 
       function entered() {
-        path.style("mix-blend-mode", null).attr("stroke", "#ddd");
-        dot.attr("display", null);
+        path.style('mix-blend-mode', null).attr('stroke', '#ddd');
+        dot.attr('display', null);
       }
 
       function left() {
-        path.style("mix-blend-mode", "multiply").attr("stroke", null);
-        dot.attr("display", "none");
+        path.style('mix-blend-mode', 'multiply').attr('stroke', null);
+        dot.attr('display', 'none');
       }
     }
 

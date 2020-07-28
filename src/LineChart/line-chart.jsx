@@ -12,8 +12,8 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
   useEffect(() => {
     const svg = d3.select(chartRef.current);
     svg.selectAll('*').remove();
-    plotAxis(svg);
     plotChart(svg);
+    plotAxis(svg);
   });
 
   const xScale = d3.scaleUtc()
@@ -47,14 +47,81 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
                   .x(datum => xScale(moment(datum.date, dateFormat).toDate()))
                   .y(datum => yScale(datum.value));
 
-    svg.append('path')
-      .datum(data)
-      .attr('fill', 'none')
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 1.5)
-      .attr('stroke-linejoin', 'round')
-      .attr('stroke-linecap', 'round')
-      .attr('d', line);
+    const path = svg.append('path')
+                  .datum(data)
+                  .attr('fill', 'none')
+                  .attr('stroke', 'steelblue')
+                  .attr('stroke-width', 3)
+                  .attr('stroke-linejoin', 'round')
+                  .attr('stroke-linecap', 'round')
+                  .attr('d', line);
+
+
+    function hover(svg, path) {
+
+      if ('ontouchstart' in document) {
+        svg.style("-webkit-tap-highlight-color", "transparent")
+          .on('touchmove', moved)
+          .on('touchstart', entered)
+          .on('touchend', exited)
+      } else {
+        svg.on('mousemove', moved)
+          .on('mouseenter', entered)
+          .on('mouseleave', exited);
+      }
+
+      const bar = svg.append('line')
+                  .attr('stroke', '#999')
+                  .attr('stroke-width', 0.5)
+                  .attr('stroke-dasharray', '5 2')
+                  .attr('display', 'none')
+                  .attr('y1', margin.top)
+                  .attr('y2', height - margin.bottom);
+
+      const dot = svg.append('g')
+                    .attr('display', 'none')
+
+      dot.append('circle')
+        .attr('r', 5)
+        .attr('fill', 'red');
+
+      const output = dot.append('text')
+        .attr('font-family', 'sans-serif')
+        .attr('font-size', 12)
+        .attr('text-anchor', 'middle')
+        .attr('y', -30);
+
+
+
+      function moved()
+      {
+        const mouse = d3.mouse(this);
+        const xMouse = xScale.invert(mouse[0]);
+        const yMouse = yScale.invert(mouse[1]);
+        const insertionPoint = d3.bisectLeft(data.map(datum => moment(datum.date)), xMouse);
+        const xValue = moment(data[insertionPoint].date).toDate();
+        const yValue = data[insertionPoint].value;
+
+        dot.attr('transform', `translate(${xScale(xValue)},${yScale(yValue)})`);
+        output.text(`${moment(xValue).format('MMM Do YYYY')}: ${yValue}`);
+        bar.attr('x1', xScale(xValue)).attr('x2', xScale(xValue));
+      }
+
+      function entered() {
+        dot.attr('display', null);
+        bar.attr('display', null);
+      }
+
+      function exited() {
+        dot.attr('display', 'none');
+        bar.attr('display', 'none');
+      }
+
+
+    }
+
+    svg.call(hover, path);
+
   };
 
   return(
