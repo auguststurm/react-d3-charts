@@ -103,8 +103,21 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
         insertionPoint = (insertionPoint <= (data.length - 1)) ? insertionPoint : data.length - 1;
 
         const insertionPointResult = data[insertionPoint].date;
-        const xValue = moment(data[insertionPoint].date || '').toDate();
+        const xValue = moment(data[insertionPoint].date).toDate();
         const yValue = data[insertionPoint].value;
+
+        var anchorPosition = (insertionPoint < 5) ? 'left' : 'middle';
+        anchorPosition = (insertionPoint > data.length - 5) ? 'right' : 'middle';
+
+        var anchorPosition = 'middle';
+
+        if (insertionPoint < 3) {
+          anchorPosition = 'start';
+        } else if (insertionPoint > data.length - 4) {
+          anchorPosition = 'end';
+        }
+
+        output.attr('text-anchor', anchorPosition);
 
         dot.attr('transform', `translate(${xScale(xValue)},${yScale(yValue)})`);
         output.text(`${moment(xValue).format('MMM Do YYYY')}: ${yValue}`);
@@ -117,6 +130,7 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
       }
 
       function exited() {
+        return;
         dot.attr('display', 'none');
         bar.attr('display', 'none');
       }
