@@ -9,6 +9,7 @@ import dataLineChart from './data/data_line.js';
 import dataHexbinChart from './data/data_hexbin.js';
 import dataMultiLineChart from './data/data_multiline.js';
 import dataStackedBarChart from './data/data_stackedBar.js';
+import dataEventsTimeline from './data/data_eventsTimeline.js';
 
 import {
   BarChart,
@@ -18,7 +19,8 @@ import {
   HexbinChart,
   MultiLineChart,
   StackedBarChart,
-  StackedBarChartHorizontal
+  StackedBarChartHorizontal,
+  EventsTimeline
 } from '@auguststurm/react-d3-charts';
 
 
@@ -112,6 +114,17 @@ class App extends React.Component {
           left: 35
         },
         data: dataStackedBarChart
+      },
+      eventsTimeline: {
+        width: 900,
+        barHeight: 20,
+        margin: {
+          top: 10,
+          right: 10,
+          bottom: 20,
+          left: 75
+        },
+        data: dataEventsTimeline
       }
     }
 
@@ -124,6 +137,14 @@ class App extends React.Component {
       <div className="example">
 
         <h1>Examples ({Object.keys(this.state).length})</h1>
+
+        <h2>EventsTimeline</h2>
+        <EventsTimeline
+          width={this.state.eventsTimeline.width}
+          barHeight={this.state.eventsTimeline.barHeight}
+          margin={this.state.eventsTimeline.margin}
+          data={this.state.eventsTimeline.data}
+        />
 
         <h2>StackedBarChartHorizontal</h2>
         <StackedBarChartHorizontal

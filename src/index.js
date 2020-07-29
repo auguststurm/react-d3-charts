@@ -8,6 +8,7 @@ import HexbinChart from './HexbinChart';
 import MultiLineChart from './MultiLineChart';
 import StackedBarChart from './StackedBarChart';
 import StackedBarChartHorizontal from './StackedBarChartHorizontal';
+import EventsTimeline from './EventsTimeline';
 
 export {
   BarChart,
@@ -17,5 +18,6 @@ export {
   HexbinChart,
   MultiLineChart,
   StackedBarChart,
-  StackedBarChartHorizontal
+  StackedBarChartHorizontal,
+  EventsTimeline
 }
