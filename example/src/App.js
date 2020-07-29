@@ -61,7 +61,7 @@ class App extends React.Component {
         height: 300,
         margin: {
           top: 15,
-          right: 10,
+          right: 50,
           bottom: 20,
           left: 35
         },

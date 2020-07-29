@@ -98,8 +98,12 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
         const mouse = d3.mouse(this);
         const xMouse = xScale.invert(mouse[0]);
         const yMouse = yScale.invert(mouse[1]);
-        const insertionPoint = d3.bisectLeft(data.map(datum => moment(datum.date)), xMouse);
-        const xValue = moment(data[insertionPoint].date).toDate();
+
+        var insertionPoint = d3.bisectLeft(data.map(datum => moment(datum.date)), xMouse);
+        insertionPoint = (insertionPoint <= (data.length - 1)) ? insertionPoint : data.length - 1;
+
+        const insertionPointResult = data[insertionPoint].date;
+        const xValue = moment(data[insertionPoint].date || '').toDate();
         const yValue = data[insertionPoint].value;
 
         dot.attr('transform', `translate(${xScale(xValue)},${yScale(yValue)})`);
