@@ -116,14 +116,15 @@ class App extends React.Component {
         data: dataStackedBarChart
       },
       eventsTimeline: {
-        width: 900,
+        width: 1000,
         barHeight: 20,
         margin: {
           top: 10,
-          right: 10,
+          right: 15,
           bottom: 20,
           left: 75
         },
+        dateFormat: 'YYYY-MM-DD',
         data: dataEventsTimeline
       }
     }
