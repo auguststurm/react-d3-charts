@@ -130,7 +130,6 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
       }
 
       function exited() {
-        return;
         dot.attr('display', 'none');
         bar.attr('display', 'none');
       }
