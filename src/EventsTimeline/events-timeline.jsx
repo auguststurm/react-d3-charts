@@ -59,18 +59,18 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
     svg.append('g')
       .selectAll('g')
       .data(data)
-      .join('g')
-      .attr('fill', datum => colorScale(datum.title))
-      .attr('stroke', 'black')
-      .attr('stroke-width', 0.25)
-      .attr('stroke-opacity', 0.5)
-      .selectAll('rect')
-      .data(datum => datum.events)
-      .join('rect')
-      .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
-      .attr('y', event => yScale(event.groupTitle))
-      .attr('width', event => xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()))
-      .attr('height', yScale.bandwidth());
+        .join('g')
+        .attr('fill', datum => colorScale(datum.title))
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.25)
+        .attr('stroke-opacity', 0.5)
+        .selectAll('rect')
+        .data(datum => datum.events)
+          .join('rect')
+          .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
+          .attr('y', event => yScale(event.groupTitle))
+          .attr('width', event => xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()))
+          .attr('height', yScale.bandwidth());
   };
 
   return(
