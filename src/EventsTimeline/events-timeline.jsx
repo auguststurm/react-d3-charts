@@ -21,6 +21,7 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
     group.events.forEach(event => {
       allDates.push(moment(event.start, dateFormat).toDate());
       allDates.push(moment(event.end, dateFormat).toDate());
+      event.groupTitle = group.title;
     });
   });
 
@@ -31,8 +32,12 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
   const yScale = d3.scaleBand()
                   .domain(data.map(datum => datum.title))
                   .range([margin.top, height - margin.bottom])
-                  .padding(0.1);
+                  .padding(0.2);
 
+  const colorScale = d3.scaleOrdinal()
+                      .domain(data.map(datum => datum.title))
+                      .range(d3.schemeSpectral[data.length])
+                      .unknown('#ccc');
 
   const plotAxis = (svg) => {
 
@@ -52,6 +57,19 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
   };
 
   const plotChart = (svg) => {
+
+    svg.append('g')
+      .selectAll('g')
+      .data(data)
+      .join('g')
+      .attr('fill', datum => colorScale(datum.title))
+      .selectAll('rect')
+      .data(datum => datum.events)
+      .join('rect')
+      .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
+      .attr('y', event => yScale(event.groupTitle))
+      .attr('width', event => xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()))
+      .attr('height', yScale.bandwidth())
 
   };
 
