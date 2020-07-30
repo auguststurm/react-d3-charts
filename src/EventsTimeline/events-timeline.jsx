@@ -39,7 +39,6 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
                       .range(d3.schemeSpectral[data.length])
                       .unknown('#ccc');
 
-
   const plotAxis = (svg) => {
 
     const xAxis = d3.axisBottom(xScale).ticks(width / 40).tickSizeOuter(0);
@@ -54,12 +53,9 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
       .attr('transform', `translate(${margin.left}, 0)`)
       .call(yAxis)
       .call(g => g.selectAll('.domain').remove());
-
   };
 
-
   const plotChart = (svg) => {
-
     svg.append('g')
       .selectAll('g')
       .data(data)
@@ -72,20 +68,16 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
       .attr('y', event => yScale(event.groupTitle))
       .attr('width', event => xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()))
       .attr('height', yScale.bandwidth());
-
   };
-
 
   return(
     <div className='eventsTimeline'>
-
       <svg
         viewBox={`0, 0, ${width}, ${height}`}
         width={width}
         height={height}
         ref={chartRef}
       />
-
     </div>
   );
 
