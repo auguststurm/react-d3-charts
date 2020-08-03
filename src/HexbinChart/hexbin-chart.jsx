@@ -6,7 +6,7 @@ import './hexbin-chart.sass';
 
 // Source: https://observablehq.com/@d3/hexbin
 
-const HexbinChart = ({width, height, margin, radius, data}) => {
+const HexbinChart = ({dark, width, height, margin, radius, data}) => {
 
   const chartRef = useRef(null);
 
@@ -16,8 +16,6 @@ const HexbinChart = ({width, height, margin, radius, data}) => {
     plotChart(svg);
     plotAxis(svg);
   });
-
-
 
   const xScale = d3.scaleLog()
                   .domain(d3.extent(data, datum => datum.x))
@@ -71,9 +69,10 @@ const HexbinChart = ({width, height, margin, radius, data}) => {
 
   };
 
+  const style = (dark) ? 'hexbinChart hexbinChart__dark' : 'hexbinChart';
 
   return(
-    <div className='hexbinChart'>
+    <div className={style}>
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}

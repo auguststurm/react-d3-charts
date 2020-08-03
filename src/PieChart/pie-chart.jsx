@@ -4,7 +4,7 @@ import './pie-chart.sass';
 
 // Source: https://observablehq.com/@d3/donut-chart
 
-const PieChart = ({diameter, innerRadius, labelSize, data}) => {
+const PieChart = ({dark, diameter, innerRadius, labelSize, data}) => {
 
   const chartRef = useRef(null);
 

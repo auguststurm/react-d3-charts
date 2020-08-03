@@ -5,7 +5,7 @@ import './stacked-bar-chart-horizontal.sass';
 
 // https://observablehq.com/@d3/stacked-horizontal-bar-chart
 
-const StackedBarChartHorizontal = ({width, barHeight, margin, data}) => {
+const StackedBarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
 
   const chartRef = useRef(null);
 
@@ -70,11 +70,12 @@ const StackedBarChartHorizontal = ({width, barHeight, margin, data}) => {
       .attr('height', yScale.bandwidth())
       .append('title')
       .text(datum => `${datum.data.name} ${datum.key} ${datum.data[datum.key]}`);
-
   };
 
+  const style = (dark) ? 'stackedBarChartHorizontal stackedBarChartHorizontal__dark' : 'stackedBarChartHorizontal';
+
   return(
-    <div className="stackedBarChartHorizontal">
+    <div className={style}>
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}

@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import moment from 'moment';
 
-const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
+import './events-timeline.sass';
+
+const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
 
   const chartRef = useRef(null);
 
@@ -61,7 +63,7 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
       .data(data)
         .join('g')
         .attr('fill', datum => colorScale(datum.title))
-        .attr('stroke', 'black')
+        .attr('stroke', (dark) ? '' : 'black')
         .attr('stroke-width', 0.25)
         .attr('stroke-opacity', 0.5)
         .selectAll('rect')
@@ -73,8 +75,10 @@ const EventsTimeline = ({width, barHeight, margin, dateFormat, data}) => {
           .attr('height', yScale.bandwidth());
   };
 
+  const style = (dark) ? 'eventsTimeline eventsTimeline__dark' : 'eventsTimeline';
+
   return(
-    <div className='eventsTimeline'>
+    <div className={style}>
       <svg
         viewBox={`0, 0, ${width}, ${height}`}
         width={width}

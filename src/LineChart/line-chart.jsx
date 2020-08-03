@@ -5,7 +5,7 @@ import './line-chart.sass';
 
 // Source: https://observablehq.com/@d3/line-chart
 
-const LineChart = ({width, height, margin, dateFormat, data}) => {
+const LineChart = ({dark, width, height, margin, dateFormat, data}) => {
 
   const chartRef = useRef(null);
 
@@ -33,11 +33,13 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
   const plotAxis = (svg) => {
     svg.append('g')
       .attr('transform', `translate(0, ${height - margin.bottom})`)
-      .call(xAxis);
+      .call(xAxis)
+      .call(g => g.select('.domain').remove());
 
     svg.append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
-      .call(yAxis);
+      .call(yAxis)
+      .call(g => g.select('.domain').remove());
   };
 
 
@@ -50,7 +52,7 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
     const path = svg.append('path')
                   .datum(data)
                   .attr('fill', 'none')
-                  .attr('stroke', 'steelblue')
+                  .attr('stroke', (dark) ? 'orange' : 'steelblue')
                   .attr('stroke-width', 3)
                   .attr('stroke-linejoin', 'round')
                   .attr('stroke-linecap', 'round')
@@ -83,12 +85,13 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
 
       dot.append('circle')
         .attr('r', 5)
-        .attr('fill', 'red');
+        .attr('fill', (dark) ? 'yellow' : 'red');
 
       const output = dot.append('text')
         .attr('font-family', 'sans-serif')
         .attr('font-size', 12)
         .attr('text-anchor', 'middle')
+        .attr('fill', (dark) ? 'white' : 'black')
         .attr('y', -30);
 
 
@@ -138,11 +141,12 @@ const LineChart = ({width, height, margin, dateFormat, data}) => {
     }
 
     svg.call(hover, path);
-
   };
 
+  const style = (dark) ? 'lineChart lineChart__dark' : 'lineChart';
+
   return(
-    <div className='lineChart'>
+    <div className={style}>
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+
 import './bar-chart.sass';
 
 // Source: https://observablehq.com/@d3/bar-chart
 
-const BarChart = ({width, height, margin, data}) => {
+const BarChart = ({dark, width, height, margin, data}) => {
 
   const chartRef = useRef(null);
 
@@ -32,16 +33,17 @@ const BarChart = ({width, height, margin, data}) => {
     const xAxis = d3.axisBottom(xScale).tickFormat(i => data[i].name).tickSizeOuter(0);
     svg.append('g')
       .attr('transform', `translate(0, ${height - margin.bottom})`)
-      .call(xAxis);
+      .call(xAxis)
+      .call(g => g.select('.domain').remove());
 
     const yAxis = d3.axisLeft(yScale);
     svg.append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
-      .call(yAxis);
+      .call(yAxis)
+      .call(g => g.select('.domain').remove());
   };
 
   const plotChart = (svg) => {
-
 
     svg.selectAll('rect')
       .data(data)
@@ -60,8 +62,10 @@ const BarChart = ({width, height, margin, data}) => {
 
   };
 
+  const style = (dark) ? 'barChart barChart__dark' : 'barChart';
+
   return(
-    <div className='barChart'>
+    <div className={style}>
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}

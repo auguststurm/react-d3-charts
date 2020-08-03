@@ -5,7 +5,7 @@ import './bar-chart-horizontal.sass';
 
 // https://observablehq.com/@d3/horizontal-bar-chart
 
-const BarChartHorizontal = ({width, barHeight, margin, data}) => {
+const BarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
 
   const chartRef = useRef(null);
 
@@ -79,14 +79,15 @@ const BarChartHorizontal = ({width, barHeight, margin, data}) => {
       .text(datum => format(datum.value))
       .call(text => text.filter(datum => xScale(datum.value) - xScale(0) < 20)
       .attr('dx', +4)
-      .attr('fill', 'black')
+      .attr('fill', (dark) ? 'white' : 'black')
       .attr('text-anchor', 'start'));
 
   };
 
+  const style = (dark) ? 'barChartHorizontal barChartHorizontal__dark' : 'barChartHorizontal';
 
   return(
-    <div className='barChartHorizontal'>
+    <div className={style}>
 
       <svg
         viewBox={`0, 0, ${width}, ${chartHeight}`}

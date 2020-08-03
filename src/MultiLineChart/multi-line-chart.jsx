@@ -7,7 +7,7 @@ import './multi-line-chart.sass';
 
 // https://observablehq.com/@d3/multi-line-chart
 
-const MultiLineChart = ({width, height, margin, data}) => {
+const MultiLineChart = ({dark, width, height, margin, data}) => {
 
   const chartRef = useRef(null);
 
@@ -32,7 +32,8 @@ const MultiLineChart = ({width, height, margin, data}) => {
   const plotAxis = (svg) => {
     svg.append('g')
       .attr('transform', `translate(0, ${height - margin.bottom})`)
-      .call(xAxis);
+      .call(xAxis)
+      .call(g => g.select('.domain').remove());
 
     svg.append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
@@ -55,7 +56,7 @@ const MultiLineChart = ({width, height, margin, data}) => {
 
     const path = svg.append('g')
                   .attr('fill', 'none')
-                  .attr('stroke', 'steelblue')
+                  .attr('stroke', (dark) ? 'orange' : 'steelblue')
                   .attr('stroke-width', 1.5)
                   .attr('stroke-linejoin', 'round')
                   .attr('stroke-linecap', 'round')
@@ -88,6 +89,7 @@ const MultiLineChart = ({width, height, margin, data}) => {
           .attr('font-family', 'sans-serif')
           .attr('font-size', 10)
           .attr('text-anchor', 'middle')
+          .attr('fill', (dark) ? 'white' : 'black')
           .attr('y', -8);
 
       function moved() {
@@ -101,7 +103,9 @@ const MultiLineChart = ({width, height, margin, data}) => {
         const i = xm - moment(data.dates[i0]).toDate() > moment(data.dates[i1]).toDate() - xm ? i1 : i0;
         const s = least(data.series, d => Math.abs(d.values[i] - ym));
 
-        path.attr('stroke', d => d === s ? null : '#ddd').filter(d => d === s).raise();
+        const stroke = (dark) ? '#777' : '#ddd';
+
+        path.attr('stroke', d => d === s ? null : stroke).filter(d => d === s).raise();
 
         const xPosDateString = data.dates[i];
         const xPosDateObject = moment(xPosDateString).toDate();
@@ -122,11 +126,12 @@ const MultiLineChart = ({width, height, margin, data}) => {
     }
 
     svg.call(hover, path);
-
   };
 
+  const style = (dark) ? 'multiLineChart multiLineChart__dark' : 'multiLineChart';
+
   return(
-    <div className='multiLineChart'>
+    <div className={style}>
 
       <svg
         viewBox={`0, 0, ${width}, ${height}`}
