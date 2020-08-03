@@ -118,6 +118,7 @@ class App extends React.Component {
       eventsTimeline: {
         width: 1000,
         barHeight: 20,
+        barPadding: 0.2,
         margin: {
           top: 10,
           right: 15,
@@ -143,6 +144,7 @@ class App extends React.Component {
         <EventsTimeline
           width={this.state.eventsTimeline.width}
           barHeight={this.state.eventsTimeline.barHeight}
+          barPadding={this.state.eventsTimeline.barPadding}
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
         />
