@@ -123,7 +123,7 @@ class App extends React.Component {
           top: 10,
           right: 15,
           bottom: 20,
-          left: 75
+          left: 60
         },
         dateFormat: 'YYYY-MM-DD',
         data: dataEventsTimeline
