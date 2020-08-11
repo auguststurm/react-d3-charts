@@ -68,15 +68,18 @@ const MultiLineChart = ({dark, width, height, margin, data}) => {
 
     function hover(svg, path) {
 
-      if ("ontouchstart" in document) svg
+      if ("ontouchstart" in document) {
+        svg
           .style("-webkit-tap-highlight-color", "transparent")
           .on('touchmove', moved)
           .on('touchstart', entered)
           .on('touchend', left)
-      else svg
+      } else {
+        svg
           .on('mousemove', moved)
           .on('mouseenter', entered)
           .on('mouseleave', left);
+      }
 
       const dot = svg.append('g')
           .attr('display', 'none');
