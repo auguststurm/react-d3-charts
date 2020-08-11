@@ -58,6 +58,45 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
   };
 
   const plotChart = (svg) => {
+
+    const mouseover = (datum, i, n) => {
+      d3.select(n[i])
+        .style('stroke', (dark) ? 'white' : 'black')
+        .style('stroke-opacity', 1.0)
+        .style('stroke-width', 1.0);
+
+      tooltip
+        .transition(200)
+        .style('opacity', 1.0)
+
+      const start = moment(datum.start, dateFormat);
+      const end = moment(datum.end, dateFormat);
+      const startFormat = start.format('D MMM YYYY');
+      const endFormat = end.format('D MMM YYYY');
+      const duration = moment.duration(start.diff(end));
+      const durationFormat = moment.duration(duration, 'days').humanize();
+
+      tooltip
+        .html(`<strong>${datum.title}:</strong> ${startFormat} – ${endFormat} [~${durationFormat}]`);
+    };
+
+    const mousemove = (datum, i, n) => {
+      tooltip
+        .style('left', `${d3.event.pageX}px`)
+        .style('top', `${d3.event.pageY - 30}px`);
+    };
+
+    const mouseleave = (datum, i, n) => {
+      d3.select(n[i])
+        .style('stroke', 'black')
+        .style('stroke-opacity', 0.5)
+        .style('stroke-width', 0.25);
+
+      tooltip
+        .transition(200)
+        .style('opacity', 0);
+    };
+
     svg.append('g')
       .selectAll('g')
       .data(data)
@@ -69,10 +108,59 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
         .selectAll('rect')
         .data(datum => datum.events)
           .join('rect')
+          .attr('class', 'eventsTimeline__event')
           .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
           .attr('y', event => yScale(event.groupTitle))
           .attr('width', event => xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()))
-          .attr('height', yScale.bandwidth());
+          .attr('height', yScale.bandwidth())
+          .on('mouseover', mouseover)
+          .on('mousemove', mousemove)
+          .on('mouseleave', mouseleave);
+          // .on('mouseover', (datum, i, n) => {
+          //
+          //   d3.select(n[i])
+          //     .style('stroke', (dark) ? 'white' : 'black')
+          //     .style('stroke-opacity', 1.0)
+          //     .style('stroke-width', 1.0);
+          //
+          //   tooltip
+          //     .transition(200)
+          //     .style('opacity', 1.0)
+          //
+          //   const start = moment(datum.start, dateFormat);
+          //   const end = moment(datum.end, dateFormat);
+          //
+          //   const startFormat = start.format('D MMM YYYY');
+          //   const endFormat = end.format('D MMM YYYY');
+          //
+          //   const duration = moment.duration(start.diff(end));
+          //   const durationFormat = moment.duration(duration, 'days').humanize();
+          //
+          //   tooltip
+          //     .html(`<strong>${datum.title}:</strong> ${startFormat} – ${endFormat} [~${durationFormat}]`)
+          // })
+          // .on('mousemove', (datum, i, n) => {
+          //   tooltip
+          //     .style('left', `${d3.event.pageX}px`)
+          //     .style('top', `${d3.event.pageY - 30}px`);
+          // })
+          // .on('mouseleave', (datum, i, n) => {
+          //
+          //   d3.select(n[i])
+          //     .style('stroke', 'black')
+          //     .style('stroke-opacity', 0.5)
+          //     .style('stroke-width', 0.25);
+          //
+          //   tooltip
+          //     .transition(200)
+          //     .style('opacity', 0)
+          // });
+
+    const tooltip = d3.select(chartRef.current.parentElement)
+                      .append('div')
+                      .attr('class', 'eventsTimeline__tooltip')
+                      .style('opacity', 0);
+
   };
 
   const style = (dark) ? 'eventsTimeline eventsTimeline__dark' : 'eventsTimeline';
