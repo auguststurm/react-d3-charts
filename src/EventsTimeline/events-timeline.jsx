@@ -92,9 +92,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
         .style('stroke-opacity', 0.5)
         .style('stroke-width', 0.25);
 
-      tooltip
-        .transition(200)
-        .style('opacity', 0);
+      tooltip.transition(200).style('opacity', 0);
     };
 
     svg.append('g')
@@ -116,45 +114,6 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
           .on('mouseover', mouseover)
           .on('mousemove', mousemove)
           .on('mouseleave', mouseleave);
-          // .on('mouseover', (datum, i, n) => {
-          //
-          //   d3.select(n[i])
-          //     .style('stroke', (dark) ? 'white' : 'black')
-          //     .style('stroke-opacity', 1.0)
-          //     .style('stroke-width', 1.0);
-          //
-          //   tooltip
-          //     .transition(200)
-          //     .style('opacity', 1.0)
-          //
-          //   const start = moment(datum.start, dateFormat);
-          //   const end = moment(datum.end, dateFormat);
-          //
-          //   const startFormat = start.format('D MMM YYYY');
-          //   const endFormat = end.format('D MMM YYYY');
-          //
-          //   const duration = moment.duration(start.diff(end));
-          //   const durationFormat = moment.duration(duration, 'days').humanize();
-          //
-          //   tooltip
-          //     .html(`<strong>${datum.title}:</strong> ${startFormat} – ${endFormat} [~${durationFormat}]`)
-          // })
-          // .on('mousemove', (datum, i, n) => {
-          //   tooltip
-          //     .style('left', `${d3.event.pageX}px`)
-          //     .style('top', `${d3.event.pageY - 30}px`);
-          // })
-          // .on('mouseleave', (datum, i, n) => {
-          //
-          //   d3.select(n[i])
-          //     .style('stroke', 'black')
-          //     .style('stroke-opacity', 0.5)
-          //     .style('stroke-width', 0.25);
-          //
-          //   tooltip
-          //     .transition(200)
-          //     .style('opacity', 0)
-          // });
 
     const tooltip = d3.select(chartRef.current.parentElement)
                       .append('div')
