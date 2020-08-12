@@ -85,7 +85,7 @@ const LineChart = ({dark, width, height, margin, dateFormat, data}) => {
 
       dot.append('circle')
         .attr('r', 5)
-        .attr('fill', (dark) ? 'yellow' : 'red');
+        .attr('fill', (dark) ? 'red' : 'red');
 
       const output = dot.append('text')
         .attr('font-family', 'sans-serif')

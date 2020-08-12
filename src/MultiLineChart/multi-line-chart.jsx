@@ -57,13 +57,14 @@ const MultiLineChart = ({dark, width, height, margin, data}) => {
     const path = svg.append('g')
                   .attr('fill', 'none')
                   .attr('stroke', (dark) ? 'orange' : 'steelblue')
-                  .attr('stroke-width', 1.5)
+                  .attr('stroke-width', 2)
+                  .attr('stroke-opacity', 0.5)
                   .attr('stroke-linejoin', 'round')
                   .attr('stroke-linecap', 'round')
                   .selectAll('path')
                   .data(data.series)
                   .join('path')
-                  .style('mix-blend-mode', 'multiply')
+                  .style('mix-blend-mode', 'overlay')
                   .attr('d', datum => line(datum.values));
 
     function hover(svg, path) {
@@ -106,7 +107,7 @@ const MultiLineChart = ({dark, width, height, margin, data}) => {
         const i = xm - moment(data.dates[i0]).toDate() > moment(data.dates[i1]).toDate() - xm ? i1 : i0;
         const s = least(data.series, d => Math.abs(d.values[i] - ym));
 
-        const stroke = (dark) ? '#777' : '#ddd';
+        const stroke = (dark) ? '#444' : '#ddd';
 
         path.attr('stroke', d => d === s ? null : stroke).filter(d => d === s).raise();
 
@@ -118,12 +119,12 @@ const MultiLineChart = ({dark, width, height, margin, data}) => {
       }
 
       function entered() {
-        path.style('mix-blend-mode', null).attr('stroke', '#ddd');
+        path.style('mix-blend-mode', 'normal').attr('stroke', 'orange');
         dot.attr('display', null);
       }
 
       function left() {
-        path.style('mix-blend-mode', 'multiply').attr('stroke', null);
+        path.style('mix-blend-mode', 'overlay').attr('stroke', null);
         dot.attr('display', 'none');
       }
     }

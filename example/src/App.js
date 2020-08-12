@@ -116,14 +116,14 @@ class App extends React.Component {
         data: dataStackedBarChart
       },
       eventsTimeline: {
-        width: 1000,
+        width: 1200,
         barHeight: 20,
         barPadding: 0.2,
         margin: {
           top: 10,
           right: 15,
           bottom: 20,
-          left: 60
+          left: 80
         },
         dateFormat: 'YYYY-MM-DD',
         data: dataEventsTimeline
@@ -136,67 +136,67 @@ class App extends React.Component {
 
     return(
 
-      <div className="example">
+      <div className="example example__dark">
 
-        <h1>Examples ({Object.keys(this.state).length})</h1>
-
+        <h1>react-d3-charts ({Object.keys(this.state).length})</h1>
+        <hr />
         <h2>EventsTimeline</h2>
         <EventsTimeline
-          dark={false}
+          dark={true}
           width={this.state.eventsTimeline.width}
           barHeight={this.state.eventsTimeline.barHeight}
           barPadding={this.state.eventsTimeline.barPadding}
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
         />
-
+        <hr />
         <h2>StackedBarChartHorizontal</h2>
         <StackedBarChartHorizontal
-          dark={false}
+          dark={true}
           width={this.state.stackedBarChartHorizontal.width}
           barHeight={this.state.stackedBarChartHorizontal.barHeight}
           margin={this.state.stackedBarChartHorizontal.margin}
           data={this.state.stackedBarChartHorizontal.data}
         />
-
+        <hr />
         <h2>StackedBarChart</h2>
         <StackedBarChart
-          dark={false}
+          dark={true}
           width={this.state.stackedBarChart.width}
           height={this.state.stackedBarChart.height}
           margin={this.state.stackedBarChart.margin}
           data={this.state.stackedBarChart.data}
         />
-
+        <hr />
         <h2>MultiLineChart</h2>
         <MultiLineChart
-          dark={false}
+          dark={true}
           width={this.state.multiLineChart.width}
           height={this.state.multiLineChart.height}
           margin={this.state.multiLineChart.margin}
           data={this.state.multiLineChart.data}
         />
-
+        <hr />
         <h2>HexbinChart</h2>
         <HexbinChart
-          dark={false}
+          dark={true}
           width={this.state.hexbinChart.width}
           height={this.state.hexbinChart.height}
           margin={this.state.hexbinChart.margin}
           radius={this.state.hexbinChart.radius}
           data={this.state.hexbinChart.data}
         />
-
+        <hr />
         <h2>LineChart</h2>
         <LineChart
-          dark={false}
+          dark={true}
           width={this.state.lineChart.width}
           height={this.state.lineChart.height}
           margin={this.state.lineChart.margin}
           dateFormat={this.state.lineChart.dateFormat}
           data={this.state.lineChart.data}
         />
-
+        <hr />
         <h2>PieChart</h2>
         <PieChart
           diameter={this.state.pieChart.diameter}
@@ -204,19 +204,19 @@ class App extends React.Component {
           labelSize={this.state.pieChart.labelSize}
           data={this.state.pieChart.data}
         />
-
+        <hr />
         <h2>BarChartHorizontal</h2>
         <BarChartHorizontal
-          dark={false}
+          dark={true}
           width={this.state.barChartHorizontal.width}
           barHeight={this.state.barChartHorizontal.barHeight}
           margin={this.state.barChartHorizontal.margin}
           data={this.state.barChartHorizontal.data}
         />
-
+        <hr />
         <h2>BarChart</h2>
         <BarChart
-          dark={false}
+          dark={true}
           width={this.state.barChart.width}
           height={this.state.barChart.height}
           margin={this.state.barChart.margin}

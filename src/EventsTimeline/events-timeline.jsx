@@ -63,7 +63,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
       d3.select(n[i])
         .style('stroke', (dark) ? 'white' : 'black')
         .style('stroke-opacity', 1.0)
-        .style('stroke-width', 1.0);
+        .style('stroke-width', 2.0);
 
       tooltip
         .transition(200)
