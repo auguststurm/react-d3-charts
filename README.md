@@ -13,7 +13,17 @@ npm install --save @auguststurm/react-d3-charts
 ## Usage
 
 ```jsx
-import React from 'react'
+import React, { Component } from 'react'
+
+import {
+  dataBarChart,
+  dataPieChart,
+  dataLineChart,
+  dataHexbinChart,
+  dataMultiLineChart,
+  dataStackedBarChart,
+  dataEventsTimeline
+} from './data';
 
 import {
   BarChart,
