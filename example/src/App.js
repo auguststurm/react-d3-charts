@@ -137,7 +137,8 @@ const multiLineChartData =
     {
       "name": "Lorem Ipsum",
       "values": [1.0, 2.0, 3.0, 4.0, 5.0, ...]
-    }
+    },
+    ...
   ],
   "dates": [
     "2000-01-01T00:00:00.000Z",
@@ -184,6 +185,102 @@ const hexbinChartMarkup =
   }}
   radius={5}
   data={dataHexbinChart}
+/>`;
+
+const lineChartData =
+`[
+  {date: '2007-04-23', value: 93.24},
+  {date: '2007-04-24', value: 95.35},
+  {date: '2007-04-25', value: 98.84},
+  {date: '2007-04-26', value: 99.92},
+  {date: '2007-04-29', value: 99.8},
+  ...
+]`;
+
+const lineChartMarkup =
+`<LineChart
+  dark={true}
+  width={900}
+  height={300}
+  margin={{
+    top: 15,
+    right: 50,
+    bottom: 20,
+    left: 35
+  }}
+  dateFormat={'YYYY-MM-DD'}
+  data={dataLineChart}
+/>`;
+
+const pieChartData =
+`[
+  {name: "<5", value: 19912018},
+  {name: "5-9", value: 20501982},
+  {name: "10-14", value: 20679786},
+  {name: "15-19", value: 21354481},
+  {name: "20-24", value: 22604232},
+  ...
+]`;
+
+const pieChartMarkup =
+`<PieChart
+  diameter={300}
+  innerRadius={0.618}
+  labelSize={11}
+  data={dataPieChart}
+/>`;
+
+const barChartData =
+`[
+  {
+    "name": "E",
+    "value": 0.12702
+  },
+  {
+    "name": "T",
+    "value": 0.09056
+  },
+  {
+    "name": "A",
+    "value": 0.08167
+  },
+  {
+    "name": "O",
+    "value": 0.07507
+  },
+  {
+    "name": "I",
+    "value": 0.06966
+  },
+  ...
+]`;
+
+const barChartHorizontalMarkup =
+`<BarChartHorizontal
+  dark={true}
+  width={850}
+  barHeight={16}
+  margin={{
+    top: 30,
+    right: 0,
+    bottom: 10,
+    left: 30
+  }}
+  data={dataBarChart}
+/>`;
+
+const barChartMarkup =
+`<BarChart
+  dark={true}
+  width={850}
+  height={275}
+  margin={{
+    top: 15,
+    right: 0,
+    bottom: 20,
+    left: 35
+  }}
+  data={dataBarChart}
 />`;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -371,7 +468,9 @@ class App extends React.Component {
           dateFormat={this.state.lineChart.dateFormat}
           data={this.state.lineChart.data}
         />
+        <Specs data={lineChartData} markup={lineChartMarkup} />
         <hr />
+
         <h2>Pie/Donut Chart</h2>
         <PieChart
           diameter={this.state.pieChart.diameter}
@@ -379,7 +478,9 @@ class App extends React.Component {
           labelSize={this.state.pieChart.labelSize}
           data={this.state.pieChart.data}
         />
+        <Specs data={pieChartData} markup={pieChartMarkup} />
         <hr />
+
         <h2>Bar Chart Horizontal</h2>
         <BarChartHorizontal
           dark={true}
@@ -388,7 +489,9 @@ class App extends React.Component {
           margin={this.state.barChartHorizontal.margin}
           data={this.state.barChartHorizontal.data}
         />
+        <Specs data={barChartData} markup={barChartHorizontalMarkup} />
         <hr />
+
         <h2>Bar Chart</h2>
         <BarChart
           dark={true}
@@ -397,6 +500,7 @@ class App extends React.Component {
           margin={this.state.barChart.margin}
           data={this.state.barChart.data}
         />
+        <Specs data={barChartData} markup={barChartMarkup} />
 
       </div>
     )
