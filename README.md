@@ -173,4 +173,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [auguststurm](https://github.com/auguststurm)
+MIT ©[August Sturm](https://github.com/auguststurm)
