@@ -26,6 +26,30 @@ import {
 } from '@auguststurm/react-d3-charts';
 
 
+function Specs(props) {
+  return(
+    <div className='example__specs'>
+      <div className='example__specs--item'>
+        <h3>Data:</h3>
+        <pre>
+          <code>
+            {props.data}
+          </code>
+        </pre>
+      </div>
+      <div className='example__specs--item'>
+        <h3>Markup:</h3>
+        <pre>
+          <code>
+            {props.markup}
+          </code>
+        </pre>
+      </div>
+    </div>
+  )
+}
+
+
 class App extends React.Component {
 
   constructor(props) {
@@ -136,13 +160,49 @@ class App extends React.Component {
 
   render() {
 
+    const eventsTimelineData =
+`[
+  {
+    "_id": "5ed86e0fedfd3cdc808ae374",
+    "title": "Sociosqu",
+    "events": [
+      {
+        "_id": "5ed86e30edfd3cdc808ae375",
+        "start": "1987-07-01",
+        "end": "1996-08-15",
+        "title": "Donec euismod",
+        "description": ""
+      },
+      ...
+    ],
+  },
+  ...
+]`;
+
+    const eventsTimelineMarkup =
+`<EventsTimeline
+  dark={true}
+  width={1200},
+  barHeight={20},
+  barPadding={0.2},
+  margin={{
+    top: 10,
+    right: 15,
+    bottom: 20,
+    left: 80
+  }},
+  dateFormat={'YYYY-MM-DD'},
+  data={dataEventsTimeline}
+/>`;
+
     return(
 
       <div className="example example__dark">
 
         <h1>@auguststurm/react-d3-charts</h1>
         <hr />
-        <h2>EventsTimeline</h2>
+
+        <h2>Events Timeline</h2>
         <EventsTimeline
           dark={true}
           width={this.state.eventsTimeline.width}
@@ -151,8 +211,10 @@ class App extends React.Component {
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
         />
+        <Specs data={eventsTimelineData} markup={eventsTimelineMarkup} />
         <hr />
-        <h2>StackedBarChartHorizontal</h2>
+
+        <h2>Stacked Bar Chart Horizontal</h2>
         <StackedBarChartHorizontal
           dark={true}
           width={this.state.stackedBarChartHorizontal.width}
@@ -161,7 +223,7 @@ class App extends React.Component {
           data={this.state.stackedBarChartHorizontal.data}
         />
         <hr />
-        <h2>StackedBarChart</h2>
+        <h2>Stacked Bar Chart</h2>
         <StackedBarChart
           dark={true}
           width={this.state.stackedBarChart.width}
@@ -170,7 +232,7 @@ class App extends React.Component {
           data={this.state.stackedBarChart.data}
         />
         <hr />
-        <h2>MultiLineChart</h2>
+        <h2>Multi Line Chart</h2>
         <MultiLineChart
           dark={true}
           width={this.state.multiLineChart.width}
@@ -179,7 +241,7 @@ class App extends React.Component {
           data={this.state.multiLineChart.data}
         />
         <hr />
-        <h2>HexbinChart</h2>
+        <h2>Hexbin Chart</h2>
         <HexbinChart
           dark={true}
           width={this.state.hexbinChart.width}
@@ -189,7 +251,7 @@ class App extends React.Component {
           data={this.state.hexbinChart.data}
         />
         <hr />
-        <h2>LineChart</h2>
+        <h2>Line Chart</h2>
         <LineChart
           dark={true}
           width={this.state.lineChart.width}
@@ -199,7 +261,7 @@ class App extends React.Component {
           data={this.state.lineChart.data}
         />
         <hr />
-        <h2>PieChart</h2>
+        <h2>Pie/Donut Chart</h2>
         <PieChart
           diameter={this.state.pieChart.diameter}
           innerRadius={this.state.pieChart.innerRadius}
@@ -207,7 +269,7 @@ class App extends React.Component {
           data={this.state.pieChart.data}
         />
         <hr />
-        <h2>BarChartHorizontal</h2>
+        <h2>Bar Chart Horizontal</h2>
         <BarChartHorizontal
           dark={true}
           width={this.state.barChartHorizontal.width}
@@ -216,7 +278,7 @@ class App extends React.Component {
           data={this.state.barChartHorizontal.data}
         />
         <hr />
-        <h2>BarChart</h2>
+        <h2>Bar Chart</h2>
         <BarChart
           dark={true}
           width={this.state.barChart.width}
