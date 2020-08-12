@@ -10,6 +10,14 @@
 npm install --save @auguststurm/react-d3-charts
 ```
 
+## Example
+
+```bash
+cd @auguststurm/react-d3-charts/example
+
+yarn start
+```
+
 ## Usage
 
 ```jsx
@@ -41,7 +49,7 @@ import '@auguststurm/react-d3-charts/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return ()
   }
 }
 ```
