@@ -49,6 +49,121 @@ function Specs(props) {
   )
 }
 
+const eventsTimelineData =
+`[
+  {
+    "_id": "5ed86e0fedfd3cdc808ae374",
+    "title": "Sociosqu",
+    "events": [
+      {
+        "_id": "5ed86e30edfd3cdc808ae375",
+        "start": "1987-07-01",
+        "end": "1996-08-15",
+        "title": "Donec euismod",
+        "description": ""
+      },
+      ...
+    ],
+  },
+  ...
+]`;
+
+const eventsTimelineMarkup =
+`<EventsTimeline
+  dark={true}
+  width={1200},
+  barHeight={20},
+  barPadding={0.2},
+  margin={{
+    top: 10,
+    right: 15,
+    bottom: 20,
+    left: 80
+  }},
+  dateFormat={'YYYY-MM-DD'},
+  data={dataEventsTimeline}
+/>`;
+
+const stackedBarChartData =
+`[
+  {
+    "name": "CA",
+    "<10": 5038433,
+    "10-19": 5170341,
+    "20-29": 5809455,
+    "30-39": 5354112,
+    "40-49": 5179258,
+    "50-59": 5042094,
+    "60-69": 3737461,
+    "70-79": 2011678,
+    "≥80": 1311374,
+    "total": 38654206
+  },
+  ...
+]`;
+
+const stackedBarChartHorizontalMarkup =
+`<StackedBarChartHorizontal
+  dark={true}
+  width={900}
+  barHeight={20}
+  margin={{
+    top: 10,
+    right: 15,
+    bottom: 20,
+    left: 80
+  }}
+  data={dataStackedBarChart}
+/>`;
+
+const stackedBarChartMarkup =
+`<StackedBarChart
+  dark={true}
+  width={900}
+  height={500}
+  margin={{
+    top: 10,
+    right: 0,
+    bottom: 20,
+    left: 35
+  }}
+  data={dataStackedBarChart}
+/>`;
+
+const multiLineChartData =
+`{
+  "y": "% Unemployment",
+  "series": [
+    {
+      "name": "Lorem Ipsum",
+      "values": [1.0, 2.0, 3.0, 4.0, 5.0, ...]
+    }
+  ],
+  "dates": [
+    "2000-01-01T00:00:00.000Z",
+    "2000-02-01T00:00:00.000Z",
+    "2000-03-01T00:00:00.000Z",
+    "2000-04-01T00:00:00.000Z",
+    "2000-05-01T00:00:00.000Z",
+    ...
+  ]
+}`;
+
+const multiLineChartMarkup =
+`<MultiLineChart
+  dark={true}
+  width={900}
+  height={300}
+  margin={{
+    top: 15,
+    right: 0,
+    bottom: 20,
+    left: 35
+  }}
+  data={dataMultiLineChart}
+/>`
+
+///////////////////////////////////////////////////////////////////////////////
 
 class App extends React.Component {
 
@@ -160,41 +275,6 @@ class App extends React.Component {
 
   render() {
 
-    const eventsTimelineData =
-`[
-  {
-    "_id": "5ed86e0fedfd3cdc808ae374",
-    "title": "Sociosqu",
-    "events": [
-      {
-        "_id": "5ed86e30edfd3cdc808ae375",
-        "start": "1987-07-01",
-        "end": "1996-08-15",
-        "title": "Donec euismod",
-        "description": ""
-      },
-      ...
-    ],
-  },
-  ...
-]`;
-
-    const eventsTimelineMarkup =
-`<EventsTimeline
-  dark={true}
-  width={1200},
-  barHeight={20},
-  barPadding={0.2},
-  margin={{
-    top: 10,
-    right: 15,
-    bottom: 20,
-    left: 80
-  }},
-  dateFormat={'YYYY-MM-DD'},
-  data={dataEventsTimeline}
-/>`;
-
     return(
 
       <div className="example example__dark">
@@ -222,7 +302,9 @@ class App extends React.Component {
           margin={this.state.stackedBarChartHorizontal.margin}
           data={this.state.stackedBarChartHorizontal.data}
         />
+        <Specs data={stackedBarChartData} markup={stackedBarChartHorizontalMarkup} />
         <hr />
+
         <h2>Stacked Bar Chart</h2>
         <StackedBarChart
           dark={true}
@@ -231,7 +313,9 @@ class App extends React.Component {
           margin={this.state.stackedBarChart.margin}
           data={this.state.stackedBarChart.data}
         />
+        <Specs data={stackedBarChartData} markup={stackedBarChartMarkup} />
         <hr />
+
         <h2>Multi Line Chart</h2>
         <MultiLineChart
           dark={true}
@@ -240,7 +324,9 @@ class App extends React.Component {
           margin={this.state.multiLineChart.margin}
           data={this.state.multiLineChart.data}
         />
+        <Specs data={multiLineChartData} markup={multiLineChartMarkup} />
         <hr />
+
         <h2>Hexbin Chart</h2>
         <HexbinChart
           dark={true}
