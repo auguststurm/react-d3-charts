@@ -161,7 +161,30 @@ const multiLineChartMarkup =
     left: 35
   }}
   data={dataMultiLineChart}
-/>`
+/>`;
+
+const hexbinChartData =
+`[
+  {"x":0.23,"y":326},
+  {"x":0.21,"y":326},
+  {"x":0.23,"y":327},
+  ...
+]`;
+
+const hexbinChartMarkup =
+`<HexbinChart
+  dark={true}
+  width={800}
+  height={500}
+  margin={{
+    top: 20,
+    right: 20,
+    bottom: 30,
+    left: 40
+  }}
+  radius={5}
+  data={dataHexbinChart}
+/>`;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -336,7 +359,9 @@ class App extends React.Component {
           radius={this.state.hexbinChart.radius}
           data={this.state.hexbinChart.data}
         />
+        <Specs data={hexbinChartData} markup={hexbinChartMarkup} />
         <hr />
+
         <h2>Line Chart</h2>
         <LineChart
           dark={true}
