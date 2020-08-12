@@ -13,9 +13,20 @@ npm install --save @auguststurm/react-d3-charts
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from '@auguststurm/react-d3-charts'
+import {
+  BarChart,
+  BarChartHorizontal,
+  PieChart,
+  LineChart,
+  HexbinChart,
+  MultiLineChart,
+  StackedBarChart,
+  StackedBarChartHorizontal,
+  EventsTimeline
+} from '@auguststurm/react-d3-charts';
+
 import '@auguststurm/react-d3-charts/dist/index.css'
 
 class Example extends Component {
