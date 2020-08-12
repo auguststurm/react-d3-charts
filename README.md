@@ -4,6 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/@auguststurm/react-d3-charts.svg)](https://www.npmjs.com/package/@auguststurm/react-d3-charts) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Availability
+
+Not yet available on NPMjs.com -- testing
+
 ## Install
 
 ```bash
