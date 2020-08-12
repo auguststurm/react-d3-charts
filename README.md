@@ -6,7 +6,7 @@
 
 ## Availability
 
-Not yet available on NPMjs.com -- testing
+Not yet available on NPMjs.com -- currently in review
 
 ## Install
 
