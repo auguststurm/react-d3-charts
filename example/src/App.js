@@ -3,13 +3,23 @@ import React from 'react'
 import '@auguststurm/react-d3-charts/dist/index.css';
 import './App.sass';
 
-import dataBarChart from './data/data_bar.js';
-import dataPieChart from './data/data_pie.js';
-import dataLineChart from './data/data_line.js';
-import dataHexbinChart from './data/data_hexbin.js';
-import dataMultiLineChart from './data/data_multiline.js';
-import dataStackedBarChart from './data/data_stackedBar.js';
-import dataEventsTimeline from './data/data_eventsTimeline.js';
+import {
+  dataBarChart,
+  dataPieChart,
+  dataLineChart,
+  dataHexbinChart,
+  dataMultiLineChart,
+  dataStackedBarChart,
+  dataEventsTimeline
+} from './data';
+
+// import dataBarChart from './data/data_bar.js';
+// import dataPieChart from './data/data_pie.js';
+// import dataLineChart from './data/data_line.js';
+// import dataHexbinChart from './data/data_hexbin.js';
+// import dataMultiLineChart from './data/data_multiline.js';
+// import dataStackedBarChart from './data/data_stackedBar.js';
+// import dataEventsTimeline from './data/data_eventsTimeline.js';
 
 import {
   BarChart,
