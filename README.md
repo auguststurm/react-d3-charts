@@ -13,7 +13,7 @@ npm install --save @auguststurm/react-d3-charts
 ## Example
 
 ```bash
-cd @auguststurm/react-d3-charts/example
+@auguststurm/react-d3-charts/example
 
 yarn start
 ```
@@ -49,7 +49,24 @@ import '@auguststurm/react-d3-charts/dist/index.css'
 
 class Example extends Component {
   render() {
-    return ()
+    return (
+
+      <EventsTimeline
+        dark={true}
+        width={1200},
+        barHeight={20},
+        barPadding={0.2},
+        margin={{
+          top: 10,
+          right: 15,
+          bottom: 20,
+          left: 80
+        }},
+        dateFormat={'YYYY-MM-DD'},
+        data={dataEventsTimeline}
+      />
+
+    )
   }
 }
 ```
