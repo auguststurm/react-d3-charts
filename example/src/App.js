@@ -136,13 +136,15 @@ class App extends React.Component {
 
     return(
 
-      <div className="example example__dark">
+      // <div className="example example__dark">
+
+      <div className="example">
 
         <h1>react-d3-charts ({Object.keys(this.state).length})</h1>
         <hr />
         <h2>EventsTimeline</h2>
         <EventsTimeline
-          dark={true}
+          dark={false}
           width={this.state.eventsTimeline.width}
           barHeight={this.state.eventsTimeline.barHeight}
           barPadding={this.state.eventsTimeline.barPadding}
@@ -152,7 +154,7 @@ class App extends React.Component {
         <hr />
         <h2>StackedBarChartHorizontal</h2>
         <StackedBarChartHorizontal
-          dark={true}
+          dark={false}
           width={this.state.stackedBarChartHorizontal.width}
           barHeight={this.state.stackedBarChartHorizontal.barHeight}
           margin={this.state.stackedBarChartHorizontal.margin}
@@ -161,7 +163,7 @@ class App extends React.Component {
         <hr />
         <h2>StackedBarChart</h2>
         <StackedBarChart
-          dark={true}
+          dark={false}
           width={this.state.stackedBarChart.width}
           height={this.state.stackedBarChart.height}
           margin={this.state.stackedBarChart.margin}
@@ -170,7 +172,7 @@ class App extends React.Component {
         <hr />
         <h2>MultiLineChart</h2>
         <MultiLineChart
-          dark={true}
+          dark={false}
           width={this.state.multiLineChart.width}
           height={this.state.multiLineChart.height}
           margin={this.state.multiLineChart.margin}
@@ -179,7 +181,7 @@ class App extends React.Component {
         <hr />
         <h2>HexbinChart</h2>
         <HexbinChart
-          dark={true}
+          dark={false}
           width={this.state.hexbinChart.width}
           height={this.state.hexbinChart.height}
           margin={this.state.hexbinChart.margin}
@@ -189,7 +191,7 @@ class App extends React.Component {
         <hr />
         <h2>LineChart</h2>
         <LineChart
-          dark={true}
+          dark={false}
           width={this.state.lineChart.width}
           height={this.state.lineChart.height}
           margin={this.state.lineChart.margin}
@@ -207,7 +209,7 @@ class App extends React.Component {
         <hr />
         <h2>BarChartHorizontal</h2>
         <BarChartHorizontal
-          dark={true}
+          dark={false}
           width={this.state.barChartHorizontal.width}
           barHeight={this.state.barChartHorizontal.barHeight}
           margin={this.state.barChartHorizontal.margin}
@@ -216,7 +218,7 @@ class App extends React.Component {
         <hr />
         <h2>BarChart</h2>
         <BarChart
-          dark={true}
+          dark={false}
           width={this.state.barChart.width}
           height={this.state.barChart.height}
           margin={this.state.barChart.margin}

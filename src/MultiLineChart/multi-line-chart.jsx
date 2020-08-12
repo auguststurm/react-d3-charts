@@ -64,7 +64,7 @@ const MultiLineChart = ({dark, width, height, margin, data}) => {
                   .selectAll('path')
                   .data(data.series)
                   .join('path')
-                  .style('mix-blend-mode', 'overlay')
+                  .style('mix-blend-mode', (dark) ? 'overlay' : 'multiply')
                   .attr('d', datum => line(datum.values));
 
     function hover(svg, path) {
@@ -124,7 +124,7 @@ const MultiLineChart = ({dark, width, height, margin, data}) => {
       }
 
       function left() {
-        path.style('mix-blend-mode', 'overlay').attr('stroke', null);
+        path.style('mix-blend-mode', (dark) ? 'overlay' : 'multiply').attr('stroke', null);
         dot.attr('display', 'none');
       }
     }
