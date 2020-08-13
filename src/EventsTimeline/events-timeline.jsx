@@ -36,9 +36,12 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
                   .range([margin.top, height - margin.bottom])
                   .padding(0.2);
 
+  console.log(data.length);
+
   const colorScale = d3.scaleOrdinal()
                       .domain(data.map(datum => datum.title))
-                      .range(d3.schemeSpectral[data.length])
+                      .range(d3.schemeSpectral[11])
+                      .range(d3.schemeSet1)
                       .unknown('#ccc');
 
   const plotAxis = (svg) => {
