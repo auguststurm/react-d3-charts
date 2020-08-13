@@ -10,7 +10,8 @@ import {
   dataHexbinChart,
   dataMultiLineChart,
   dataStackedBarChart,
-  dataEventsTimeline
+  dataEventsTimeline,
+  dataExampleSpecs
 } from './data';
 
 import {
@@ -24,6 +25,7 @@ import {
   StackedBarChartHorizontal,
   EventsTimeline
 } from '@auguststurm/react-d3-charts';
+
 
 
 function Specs(props) {
@@ -49,241 +51,9 @@ function Specs(props) {
   )
 }
 
-const eventsTimelineData =
-`[
-  {
-    "_id": "5ed86e0fedfd3cdc808ae374",
-    "title": "Sociosqu",
-    "events": [
-      {
-        "_id": "5ed86e30edfd3cdc808ae375",
-        "start": "1987-07-01",
-        "end": "1996-08-15",
-        "title": "Donec euismod",
-        "description": ""
-      },
-      ...
-    ],
-  },
-  ...
-]`;
-
-const eventsTimelineMarkup =
-`<EventsTimeline
-  dark={true}
-  width={1200},
-  barHeight={20},
-  barPadding={0.2},
-  margin={{
-    top: 10,
-    right: 15,
-    bottom: 20,
-    left: 80
-  }},
-  dateFormat={'YYYY-MM-DD'},
-  data={dataEventsTimeline}
-/>`;
-
-const stackedBarChartData =
-`[
-  {
-    "name": "CA",
-    "<10": 5038433,
-    "10-19": 5170341,
-    "20-29": 5809455,
-    "30-39": 5354112,
-    "40-49": 5179258,
-    "50-59": 5042094,
-    "60-69": 3737461,
-    "70-79": 2011678,
-    "≥80": 1311374,
-    "total": 38654206
-  },
-  ...
-]`;
-
-const stackedBarChartHorizontalMarkup =
-`<StackedBarChartHorizontal
-  dark={true}
-  width={900}
-  barHeight={20}
-  margin={{
-    top: 10,
-    right: 15,
-    bottom: 20,
-    left: 80
-  }}
-  data={dataStackedBarChart}
-/>`;
-
-const stackedBarChartMarkup =
-`<StackedBarChart
-  dark={true}
-  width={900}
-  height={500}
-  margin={{
-    top: 10,
-    right: 0,
-    bottom: 20,
-    left: 35
-  }}
-  data={dataStackedBarChart}
-/>`;
-
-const multiLineChartData =
-`{
-  "y": "% Unemployment",
-  "series": [
-    {
-      "name": "Lorem Ipsum",
-      "values": [1.0, 2.0, 3.0, 4.0, 5.0, ...]
-    },
-    ...
-  ],
-  "dates": [
-    "2000-01-01T00:00:00.000Z",
-    "2000-02-01T00:00:00.000Z",
-    "2000-03-01T00:00:00.000Z",
-    "2000-04-01T00:00:00.000Z",
-    "2000-05-01T00:00:00.000Z",
-    ...
-  ]
-}`;
-
-const multiLineChartMarkup =
-`<MultiLineChart
-  dark={true}
-  width={900}
-  height={300}
-  margin={{
-    top: 15,
-    right: 0,
-    bottom: 20,
-    left: 35
-  }}
-  data={dataMultiLineChart}
-/>`;
-
-const hexbinChartData =
-`[
-  {"x":0.23,"y":326},
-  {"x":0.21,"y":326},
-  {"x":0.23,"y":327},
-  ...
-]`;
-
-const hexbinChartMarkup =
-`<HexbinChart
-  dark={true}
-  width={800}
-  height={500}
-  margin={{
-    top: 20,
-    right: 20,
-    bottom: 30,
-    left: 40
-  }}
-  radius={5}
-  data={dataHexbinChart}
-/>`;
-
-const lineChartData =
-`[
-  {date: '2007-04-23', value: 93.24},
-  {date: '2007-04-24', value: 95.35},
-  {date: '2007-04-25', value: 98.84},
-  {date: '2007-04-26', value: 99.92},
-  {date: '2007-04-29', value: 99.8},
-  ...
-]`;
-
-const lineChartMarkup =
-`<LineChart
-  dark={true}
-  width={900}
-  height={300}
-  margin={{
-    top: 15,
-    right: 50,
-    bottom: 20,
-    left: 35
-  }}
-  dateFormat={'YYYY-MM-DD'}
-  data={dataLineChart}
-/>`;
-
-const pieChartData =
-`[
-  {name: "<5", value: 19912018},
-  {name: "5-9", value: 20501982},
-  {name: "10-14", value: 20679786},
-  {name: "15-19", value: 21354481},
-  {name: "20-24", value: 22604232},
-  ...
-]`;
-
-const pieChartMarkup =
-`<PieChart
-  diameter={300}
-  innerRadius={0.618}
-  labelSize={11}
-  data={dataPieChart}
-/>`;
-
-const barChartData =
-`[
-  {
-    "name": "E",
-    "value": 0.12702
-  },
-  {
-    "name": "T",
-    "value": 0.09056
-  },
-  {
-    "name": "A",
-    "value": 0.08167
-  },
-  {
-    "name": "O",
-    "value": 0.07507
-  },
-  {
-    "name": "I",
-    "value": 0.06966
-  },
-  ...
-]`;
-
-const barChartHorizontalMarkup =
-`<BarChartHorizontal
-  dark={true}
-  width={850}
-  barHeight={16}
-  margin={{
-    top: 30,
-    right: 0,
-    bottom: 10,
-    left: 30
-  }}
-  data={dataBarChart}
-/>`;
-
-const barChartMarkup =
-`<BarChart
-  dark={true}
-  width={850}
-  height={275}
-  margin={{
-    top: 15,
-    right: 0,
-    bottom: 20,
-    left: 35
-  }}
-  data={dataBarChart}
-/>`;
 
 ///////////////////////////////////////////////////////////////////////////////
+
 
 class App extends React.Component {
 
@@ -397,6 +167,7 @@ class App extends React.Component {
 
     return(
 
+
       <div className="example example__dark">
 
         <h1>@auguststurm/react-d3-charts</h1>
@@ -411,7 +182,7 @@ class App extends React.Component {
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
         />
-        <Specs data={eventsTimelineData} markup={eventsTimelineMarkup} />
+        <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} />
         <hr />
 
         <h2>Stacked Bar Chart Horizontal</h2>
@@ -422,7 +193,7 @@ class App extends React.Component {
           margin={this.state.stackedBarChartHorizontal.margin}
           data={this.state.stackedBarChartHorizontal.data}
         />
-        <Specs data={stackedBarChartData} markup={stackedBarChartHorizontalMarkup} />
+        <Specs data={dataExampleSpecs.stackedBarChartData} markup={dataExampleSpecs.stackedBarChartHorizontalMarkup} />
         <hr />
 
         <h2>Stacked Bar Chart</h2>
@@ -433,7 +204,7 @@ class App extends React.Component {
           margin={this.state.stackedBarChart.margin}
           data={this.state.stackedBarChart.data}
         />
-        <Specs data={stackedBarChartData} markup={stackedBarChartMarkup} />
+        <Specs data={dataExampleSpecs.stackedBarChartData} markup={dataExampleSpecs.stackedBarChartMarkup} />
         <hr />
 
         <h2>Multi Line Chart</h2>
@@ -444,7 +215,7 @@ class App extends React.Component {
           margin={this.state.multiLineChart.margin}
           data={this.state.multiLineChart.data}
         />
-        <Specs data={multiLineChartData} markup={multiLineChartMarkup} />
+        <Specs data={dataExampleSpecs.multiLineChartData} markup={dataExampleSpecs.multiLineChartMarkup} />
         <hr />
 
         <h2>Hexbin Chart</h2>
@@ -456,7 +227,7 @@ class App extends React.Component {
           radius={this.state.hexbinChart.radius}
           data={this.state.hexbinChart.data}
         />
-        <Specs data={hexbinChartData} markup={hexbinChartMarkup} />
+        <Specs data={dataExampleSpecs.hexbinChartData} markup={dataExampleSpecs.hexbinChartMarkup} />
         <hr />
 
         <h2>Line Chart</h2>
@@ -468,7 +239,7 @@ class App extends React.Component {
           dateFormat={this.state.lineChart.dateFormat}
           data={this.state.lineChart.data}
         />
-        <Specs data={lineChartData} markup={lineChartMarkup} />
+        <Specs data={dataExampleSpecs.lineChartData} markup={dataExampleSpecs.lineChartMarkup} />
         <hr />
 
         <h2>Pie/Donut Chart</h2>
@@ -478,7 +249,7 @@ class App extends React.Component {
           labelSize={this.state.pieChart.labelSize}
           data={this.state.pieChart.data}
         />
-        <Specs data={pieChartData} markup={pieChartMarkup} />
+        <Specs data={dataExampleSpecs.pieChartData} markup={dataExampleSpecs.pieChartMarkup} />
         <hr />
 
         <h2>Bar Chart Horizontal</h2>
@@ -489,7 +260,7 @@ class App extends React.Component {
           margin={this.state.barChartHorizontal.margin}
           data={this.state.barChartHorizontal.data}
         />
-        <Specs data={barChartData} markup={barChartHorizontalMarkup} />
+        <Specs data={dataExampleSpecs.barChartData} markup={dataExampleSpecs.barChartHorizontalMarkup} />
         <hr />
 
         <h2>Bar Chart</h2>
@@ -500,7 +271,7 @@ class App extends React.Component {
           margin={this.state.barChart.margin}
           data={this.state.barChart.data}
         />
-        <Specs data={barChartData} markup={barChartMarkup} />
+        <Specs data={dataExampleSpecs.barChartData} markup={dataExampleSpecs.barChartMarkup} />
 
       </div>
     )
