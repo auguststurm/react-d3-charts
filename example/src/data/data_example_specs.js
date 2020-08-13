@@ -5,8 +5,7 @@ import {
   dataHexbinChart,
   dataMultiLineChart,
   dataStackedBarChart,
-  dataEventsTimeline,
-  dataExampleSpecs
+  dataEventsTimeline
 } from '.';
 
 const appComponentStates = {
