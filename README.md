@@ -4,9 +4,13 @@
 
 [![NPM](https://img.shields.io/npm/v/@auguststurm/react-d3-charts.svg)](https://www.npmjs.com/package/@auguststurm/react-d3-charts) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Live Demo
+
+### https://auguststurm.github.io/react-d3-charts/
+
 ## Availability
 
-Currently in review
+Will be available soon on NPM
 
 ## Install from NPM (pending)
 
