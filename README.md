@@ -26,7 +26,7 @@ yarn start
 
 ## Example Data
 
-The example data can be found in
+The examples data can be found in the following directory:
 
 ```bash
 example/src/data
