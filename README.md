@@ -6,9 +6,9 @@
 
 ## Availability
 
-Not yet available on NPMjs.com -- currently in review
+Currently in review
 
-## Install from NPM
+## Install from NPM (pending)
 
 ```bash
 yarn add @auguststurm/react-d3-charts
