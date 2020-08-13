@@ -1,3 +1,115 @@
+import {
+  dataBarChart,
+  dataPieChart,
+  dataLineChart,
+  dataHexbinChart,
+  dataMultiLineChart,
+  dataStackedBarChart,
+  dataEventsTimeline,
+  dataExampleSpecs
+} from '.';
+
+const appComponentStates = {
+  barChart: {
+    width: 850,
+    height: 275,
+    margin: {
+      top: 15,
+      right: 0,
+      bottom: 20,
+      left: 35
+    },
+    data: dataBarChart
+  },
+  barChartHorizontal: {
+    width: 850,
+    barHeight: 16,
+    margin: {
+      top: 30,
+      right: 0,
+      bottom: 10,
+      left: 30
+    },
+    data: dataBarChart
+  },
+  pieChart: {
+    diameter: 300,
+    innerRadius: 0.618,
+    labelSize: 11,
+    data: dataPieChart
+  },
+  lineChart: {
+    width: 900,
+    height: 300,
+    margin: {
+      top: 15,
+      right: 50,
+      bottom: 20,
+      left: 35
+    },
+    dateFormat: 'YYYY-MM-DD',
+    data: dataLineChart
+  },
+  multiLineChart: {
+    width: 900,
+    height: 300,
+    margin: {
+      top: 15,
+      right: 0,
+      bottom: 20,
+      left: 35
+    },
+    data: dataMultiLineChart
+  },
+  hexbinChart: {
+    width: 800,
+    height: 500,
+    margin: {
+      top: 20,
+      right: 20,
+      bottom: 30,
+      left: 40
+    },
+    radius: 5,
+    data: dataHexbinChart
+  },
+  stackedBarChart: {
+    width: 900,
+    height: 500,
+    margin: {
+      top: 10,
+      right: 0,
+      bottom: 20,
+      left: 35
+    },
+    data: dataStackedBarChart
+  },
+  stackedBarChartHorizontal: {
+    width: 900,
+    barHeight: 16,
+    margin: {
+      top: 30,
+      right: 0,
+      bottom: 0,
+      left: 35
+    },
+    data: dataStackedBarChart
+  },
+  eventsTimeline: {
+    width: 1200,
+    barHeight: 20,
+    barPadding: 0.2,
+    margin: {
+      top: 10,
+      right: 15,
+      bottom: 20,
+      left: 80
+    },
+    dateFormat: 'YYYY-MM-DD',
+    data: dataEventsTimeline
+  }
+}
+
 const eventsTimelineData =
 `[
   {
@@ -249,5 +361,6 @@ export default {
   pieChartMarkup,
   barChartData,
   barChartHorizontalMarkup,
-  barChartMarkup
+  barChartMarkup,
+  appComponentStates
 }
