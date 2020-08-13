@@ -24,6 +24,14 @@ yarn install
 yarn start
 ```
 
+## Example Data
+
+The example data can be found in
+
+```bash
+example/src/data
+```
+
 ## Usage
 
 ```jsx
