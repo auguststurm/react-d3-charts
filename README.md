@@ -19,6 +19,8 @@ yarn add @auguststurm/react-d3-charts
 ```bash
 @auguststurm/react-d3-charts/example
 
+yarn install
+
 yarn start
 ```
 
