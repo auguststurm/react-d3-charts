@@ -8,13 +8,13 @@
 
 Not yet available on NPMjs.com -- currently in review
 
-## Install
+## Install from NPM
 
 ```bash
 yarn add @auguststurm/react-d3-charts
 ```
 
-## Example
+## Run Example
 
 ```bash
 @auguststurm/react-d3-charts/example
