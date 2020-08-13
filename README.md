@@ -8,11 +8,7 @@
 
 ### https://auguststurm.github.io/react-d3-charts/
 
-## Availability
-
-Will be available soon on NPM
-
-## Install from NPM (pending)
+## Install from NPM
 
 ```bash
 yarn add @auguststurm/react-d3-charts
