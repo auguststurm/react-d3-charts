@@ -39,6 +39,18 @@ function Specs(props) {
           </code>
         </pre>
       </div>
+
+      {props.handler &&
+        <div className='example__specs--item'>
+          <h3>Returns:</h3>
+          <pre>
+            <code>
+              {props.handler}
+            </code>
+          </pre>
+        </div>
+      }
+
     </div>
   )
 }
@@ -51,6 +63,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = dataExampleSpecs.appComponentStates
+  }
+
+  handleEventsTimelineEventSelection = (event) => {
+    console.log('EventsTimeline:');
+    console.log(event);
   }
 
   render() {
@@ -70,8 +87,9 @@ class App extends React.Component {
           barPadding={this.state.eventsTimeline.barPadding}
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
+          handler={this.handleEventsTimelineEventSelection}
         />
-        <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} />
+        <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} handler={'The selected event data object.'} />
         <hr />
 
         <h2>Stacked Bar Chart Horizontal</h2>

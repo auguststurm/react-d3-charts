@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import './events-timeline.sass';
 
-const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
+const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, handler}) => {
 
   const chartRef = useRef(null);
 
@@ -19,11 +19,12 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
 
   var allDates = [];
 
-  data.forEach(group => {
+  data.forEach((group, groupIndex) => {
     group.events.forEach(event => {
       allDates.push(moment(event.start, dateFormat).toDate());
       allDates.push(moment(event.end, dateFormat).toDate());
       event.groupTitle = group.title;
+      event.groupIndex = groupIndex;
     });
   });
 
@@ -78,7 +79,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
       const durationFormat = moment.duration(duration, 'days').humanize();
 
       tooltip
-        .html(`<strong>${datum.title}:</strong> ${startFormat} – ${endFormat} [~${durationFormat}]`);
+        .html(`<strong>${datum.title}:</strong>&nbsp;${startFormat}&nbsp;–&nbsp;${endFormat}&nbsp;[~${durationFormat}]`);
     };
 
     const mousemove = (datum, i, n) => {
@@ -96,6 +97,12 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
       tooltip.transition(200).style('opacity', 0);
     };
 
+    const eventClick = (event) => {
+      if (handler) {
+        handler(event);
+      }
+    }
+
     svg.append('g')
       .selectAll('g')
       .data(data)
@@ -105,7 +112,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
         .attr('stroke-width', 0.25)
         .attr('stroke-opacity', 0.5)
         .selectAll('rect')
-        .data(datum => datum.events)
+        .data((datum) => datum.events)
           .join('rect')
           .attr('class', 'eventsTimeline__event')
           .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
@@ -114,7 +121,8 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data}) => {
           .attr('height', yScale.bandwidth())
           .on('mouseover', mouseover)
           .on('mousemove', mousemove)
-          .on('mouseleave', mouseleave);
+          .on('mouseleave', mouseleave)
+          .on('click', event => eventClick(event));
 
     const tooltip = d3.select(chartRef.current.parentElement)
                       .append('div')

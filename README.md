@@ -62,6 +62,12 @@ import {
 import '@auguststurm/react-d3-charts/dist/index.css'
 
 class Example extends Component {
+
+  handleEventsTimelineEventSelection = (event) => {
+    console.log('EventsTimeline:');
+    console.log(event);
+  }
+
   render() {
     return (
 
@@ -78,6 +84,7 @@ class Example extends Component {
         }},
         dateFormat={'YYYY-MM-DD'},
         data={dataEventsTimeline}
+        handler={this.handleEventsTimelineEventSelection}
       />
 
       <StackedBarChartHorizontal
