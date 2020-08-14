@@ -42,7 +42,7 @@ function Specs(props) {
 
       {props.handler &&
         <div className='example__specs--item'>
-          <h3>Returns:</h3>
+          <h3>Handler:</h3>
           <pre>
             <code>
               {props.handler}
@@ -89,7 +89,7 @@ class App extends React.Component {
           data={this.state.eventsTimeline.data}
           handler={this.handleEventsTimelineEventSelection}
         />
-        <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} handler={'The selected event data object.'} />
+        <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} handler={'Clicking an event will return the data for that event.'} />
         <hr />
 
         <h2>Stacked Bar Chart Horizontal</h2>

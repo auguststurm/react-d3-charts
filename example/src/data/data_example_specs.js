@@ -142,6 +142,7 @@ const eventsTimelineMarkup =
   }},
   dateFormat={'YYYY-MM-DD'},
   data={dataEventsTimeline}
+  handler={this.handleEventsTimelineEventSelection}
 />`;
 
 const stackedBarChartData =
