@@ -20,11 +20,12 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, handl
   var allDates = [];
 
   data.forEach((group, groupIndex) => {
-    group.events.forEach(event => {
+    group.events.forEach((event, eventIndex) => {
       allDates.push(moment(event.start, dateFormat).toDate());
       allDates.push(moment(event.end, dateFormat).toDate());
       event.groupTitle = group.title;
       event.groupIndex = groupIndex;
+      event.eventIndex = eventIndex;
     });
   });
 
