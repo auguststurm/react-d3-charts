@@ -1,11 +1,13 @@
 {
   "name": "@auguststurm/react-d3-charts",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A React &amp; D3 charting package.",
   "author": "auguststurm",
   "license": "MIT",
   "repository": "auguststurm/react-d3-charts",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
