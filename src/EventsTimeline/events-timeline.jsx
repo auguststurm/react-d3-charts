@@ -160,7 +160,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showL
             .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
             .attr('y', event => yScale(event.groupTitle) + yScale.bandwidth())
             .attr('dx', 3)
-            .attr('dy', -4)
+            .attr('dy', -3)
             .text(event => event.title);
     }
 
