@@ -87,6 +87,8 @@ class App extends React.Component {
           barPadding={this.state.eventsTimeline.barPadding}
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
+          showTooltips={true}
+          showLeftAxis={true}
           handler={this.handleEventsTimelineEventSelection}
         />
         <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} handler={'Clicking an event will return the data for that event.'} />

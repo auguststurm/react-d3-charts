@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import './events-timeline.sass';
 
-const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, handler}) => {
+const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showTooltips, showLeftAxis, handler}) => {
 
   const chartRef = useRef(null);
 
@@ -54,10 +54,13 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, handl
       .call(xAxis)
       .call(g => g.selectAll('.domain').remove());
 
-    svg.append('g')
-      .attr('transform', `translate(${margin.left}, 0)`)
-      .call(yAxis)
-      .call(g => g.selectAll('.domain').remove());
+    if (showLeftAxis) {
+      svg.append('g')
+        .attr('transform', `translate(${margin.left}, 0)`)
+        .call(yAxis)
+        .call(g => g.selectAll('.domain').remove());
+    }
+
   };
 
   const plotChart = (svg) => {
@@ -70,7 +73,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, handl
 
       tooltip
         .transition(200)
-        .style('opacity', 1.0)
+        .style('opacity', (showTooltips) ? 1.0 : 0);
 
       const start = moment(datum.start, dateFormat);
       const end = moment(datum.end, dateFormat);
