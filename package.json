@@ -5,9 +5,6 @@
   "author": "auguststurm",
   "license": "MIT",
   "repository": "auguststurm/react-d3-charts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
