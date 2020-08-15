@@ -131,17 +131,19 @@ const eventsTimelineData =
 const eventsTimelineMarkup =
 `<EventsTimeline
   dark={true}
-  width={1200},
-  barHeight={20},
-  barPadding={0.2},
+  width={1200}
+  barHeight={20}
+  barPadding={0.2}
   margin={{
     top: 10,
     right: 15,
     bottom: 20,
     left: 80
   }},
-  dateFormat={'YYYY-MM-DD'},
+  dateFormat={'YYYY-MM-DD'}
   data={dataEventsTimeline}
+  showTooltips={true}
+  showLeftAxis={true}
   handler={this.handleEventsTimelineEventSelection}
 />`;
 
