@@ -103,6 +103,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showT
 
     const eventClick = (event) => {
       if (handler) {
+        tooltip.style('opacity', 0);
         handler(event);
       }
     }
