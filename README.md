@@ -84,6 +84,7 @@ class Example extends Component {
         }},
         dateFormat={'YYYY-MM-DD'}
         data={dataEventsTimeline}
+        showLabels={true}
         showTooltips={true}
         showLeftAxis={true}
         handler={this.handleEventsTimelineEventSelection}

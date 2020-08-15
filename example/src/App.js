@@ -87,6 +87,7 @@ class App extends React.Component {
           barPadding={this.state.eventsTimeline.barPadding}
           margin={this.state.eventsTimeline.margin}
           data={this.state.eventsTimeline.data}
+          showLabels={true}
           showTooltips={true}
           showLeftAxis={true}
           handler={this.handleEventsTimelineEventSelection}

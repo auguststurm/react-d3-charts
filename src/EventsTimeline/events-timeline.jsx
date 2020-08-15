@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import './events-timeline.sass';
 
-const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showTooltips, showLeftAxis, handler}) => {
+const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showLabels, showTooltips, showLeftAxis, handler}) => {
 
   const chartRef = useRef(null);
 
@@ -128,6 +128,41 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showT
           .on('mousemove', mousemove)
           .on('mouseleave', mouseleave)
           .on('click', event => eventClick(event));
+
+    if (showLabels)
+    {
+      svg.append('defs')
+        .selectAll('clipPath')
+        .data(data)
+          .enter('clipPath')
+          .selectAll('clipPath')
+          .data((datum) => datum.events)
+          .join('clipPath')
+          .attr('id', (event) => `event-clip-path-${event.groupIndex}-${event.eventIndex}`)
+          .append('rect')
+          .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
+          .attr('y', event => yScale(event.groupTitle))
+          .attr('width', event => {
+            let w = xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()) - 3;
+            return (w >= 0) ? w : 0;
+          })
+          .attr('height', yScale.bandwidth());
+
+      svg.append('g')
+        .selectAll('g')
+        .data(data)
+          .join('g')
+          .selectAll('text')
+            .data((datum) => datum.events)
+            .join('text')
+            .attr('clip-path', (event) => `url(#event-clip-path-${event.groupIndex}-${event.eventIndex})`)
+            .attr('class', 'eventsTimeline__label')
+            .attr('x', event => xScale(moment(event.start, dateFormat).toDate()))
+            .attr('y', event => yScale(event.groupTitle) + yScale.bandwidth())
+            .attr('dx', 3)
+            .attr('dy', -4)
+            .text(event => event.title);
+    }
 
     const tooltip = d3.select(chartRef.current.parentElement)
                       .append('div')
