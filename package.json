@@ -1,6 +1,6 @@
 {
   "name": "@auguststurm/react-d3-charts",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A React &amp; D3 charting package.",
   "author": "auguststurm",
   "license": "MIT",
