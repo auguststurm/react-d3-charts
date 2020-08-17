@@ -90,6 +90,7 @@ class App extends React.Component {
           showLabels={true}
           showTooltips={true}
           showLeftAxis={true}
+          onLoadFitWidth={true}
           handler={this.handleEventsTimelineEventSelection}
         />
         <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} handler={'Clicking an event will return the data for that event.'} />

@@ -1,15 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import moment from 'moment';
 
 import './events-timeline.sass';
 
-const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showLabels, showTooltips, showLeftAxis, handler}) => {
+const EventsTimeline = ({
+                          dark = false,
+                          width = 500,
+                          barHeight = 20,
+                          barPadding = 0.2,
+                          margin = {
+                            top: 10,
+                            left: 50,
+                            bottom: 20
+                          },
+                          dateFormat,
+                          data,
+                          showLabels = true,
+                          showTooltips = true,
+                          showLeftAxis = true,
+                          onLoadFitWidth = false,
+                          handler = false
+                        }) => {
 
+  const [vizWidth, setVizWidth] = useState(width);
+
+  const containerRef = useRef(null);
   const chartRef = useRef(null);
 
   useEffect(() => {
+
     const svg = d3.select(chartRef.current);
+
+    if (onLoadFitWidth) { setVizWidth(containerRef.current.clientWidth); }
+
     svg.selectAll('*').remove();
     plotChart(svg);
     plotAxis(svg);
@@ -31,7 +55,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showL
 
   const xScale = d3.scaleUtc()
                   .domain(d3.extent(allDates)).nice()
-                  .range([margin.left, width - margin.right]);
+                  .range([margin.left, vizWidth - margin.right]);
 
   const yScale = d3.scaleBand()
                   .domain(data.map(datum => datum.title))
@@ -46,7 +70,7 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showL
 
   const plotAxis = (svg) => {
 
-    const xAxis = d3.axisBottom(xScale).ticks(width / 40).tickSizeOuter(0);
+    const xAxis = d3.axisBottom(xScale).ticks(vizWidth / 40).tickSizeOuter(0);
     const yAxis = d3.axisLeft(yScale);
 
     svg.append('g')
@@ -174,10 +198,10 @@ const EventsTimeline = ({dark, width, barHeight, margin, dateFormat, data, showL
   const style = (dark) ? 'eventsTimeline eventsTimeline__dark' : 'eventsTimeline';
 
   return(
-    <div className={style}>
+    <div className={style} ref={containerRef}>
       <svg
-        viewBox={`0, 0, ${width}, ${height}`}
-        width={width}
+        viewBox={`0, 0, ${vizWidth}, ${height}`}
+        width={vizWidth}
         height={height}
         ref={chartRef}
       />
