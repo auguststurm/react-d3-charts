@@ -145,6 +145,8 @@ const eventsTimelineMarkup =
   showLabels={true}
   showTooltips={true}
   showLeftAxis={true}
+  onLoadFitWidth={true}
+  onResizeFitWidth={true}
   handler={this.handleEventsTimelineEventSelection}
 />`;
 

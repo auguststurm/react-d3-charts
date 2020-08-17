@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import moment from 'moment';
+import ResizeOvserver from 'react-resize-observer';
 
 import './events-timeline.sass';
 
@@ -20,6 +21,7 @@ const EventsTimeline = ({
                           showTooltips = true,
                           showLeftAxis = true,
                           onLoadFitWidth = false,
+                          onResizeFitWidth = false,
                           handler = false
                         }) => {
 
@@ -30,10 +32,9 @@ const EventsTimeline = ({
 
   useEffect(() => {
 
-    const svg = d3.select(chartRef.current);
-
     if (onLoadFitWidth) { setVizWidth(containerRef.current.clientWidth); }
 
+    const svg = d3.select(chartRef.current);
     svg.selectAll('*').remove();
     plotChart(svg);
     plotAxis(svg);
@@ -70,7 +71,7 @@ const EventsTimeline = ({
 
   const plotAxis = (svg) => {
 
-    const xAxis = d3.axisBottom(xScale).ticks(vizWidth / 40).tickSizeOuter(0);
+    const xAxis = d3.axisBottom(xScale).ticks(vizWidth / 70).tickSizeOuter(0);
     const yAxis = d3.axisLeft(yScale);
 
     svg.append('g')
@@ -204,6 +205,11 @@ const EventsTimeline = ({
         width={vizWidth}
         height={height}
         ref={chartRef}
+      />
+      <ResizeOvserver
+        onResize={(rect) => {
+          setVizWidth(rect.width);
+        }}
       />
     </div>
   );
