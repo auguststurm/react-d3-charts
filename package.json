@@ -1,6 +1,6 @@
 {
   "name": "@auguststurm/react-d3-charts",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A React &amp; D3 charting package.",
   "author": "auguststurm",
   "license": "MIT",
@@ -54,6 +54,7 @@
     "d3": "^5.16.0",
     "d3-array": "2",
     "d3-hexbin": "^0.2.2",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "react-resize-observer": "^1.1.1"
   }
 }
