@@ -1,7 +1,3 @@
-import { ExampleComponent } from '.'
+import '@testing-library/jest-dom/extend-expect';
 
-describe('ExampleComponent', () => {
-  it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+import './BarChart/bar-chart.text.jsx';
