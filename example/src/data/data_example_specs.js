@@ -23,6 +23,7 @@ const appComponentStates = {
   barChartHorizontal: {
     width: 850,
     barHeight: 16,
+    barPadding: 0.1,
     margin: {
       top: 30,
       right: 0,

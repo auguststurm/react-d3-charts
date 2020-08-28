@@ -169,6 +169,7 @@ class App extends React.Component {
           dark={true}
           width={this.state.barChartHorizontal.width}
           barHeight={this.state.barChartHorizontal.barHeight}
+          barPadding={this.state.eventsTimeline.barPadding}
           margin={this.state.barChartHorizontal.margin}
           data={this.state.barChartHorizontal.data}
         />

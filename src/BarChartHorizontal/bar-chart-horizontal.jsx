@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-
+import numbro from 'numbro';
 import './bar-chart-horizontal.sass';
 
 // https://observablehq.com/@d3/horizontal-bar-chart
 
-const BarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
+const BarChartHorizontal = ({dark, width, barHeight, barPadding, margin, data}) => {
 
   const chartRef = useRef(null);
 
@@ -16,7 +16,8 @@ const BarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
     plotAxis(svg);
   });
 
-  const chartHeight = Math.ceil((data.length + 0.1) * barHeight) + margin.top + margin.bottom;
+  // const chartHeight = Math.ceil((data.length + 0.1) * barHeight) + margin.top + margin.bottom;
+  const chartHeight = Math.ceil((data.length + barPadding) * barHeight) + margin.top + margin.bottom;
 
   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -51,8 +52,6 @@ const BarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
 
   const plotChart = (svg) => {
 
-    const format = xScale.tickFormat(20, '%');
-
     svg.append('g')
       .selectAll('rect')
       .data(data)
@@ -61,7 +60,8 @@ const BarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
       .attr('x', xScale(0))
       .attr('y', (datum, index) => yScale(index))
       .attr('width', (datum) => xScale(datum.value) - xScale(0))
-      .attr('height', yScale.bandwidth());
+      .attr('height', yScale.bandwidth())
+      .attr('value', (datum) => datum.value);
 
     svg.append('g')
       .attr('fill', 'white')
@@ -72,11 +72,12 @@ const BarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
       .selectAll('text')
       .data(data)
       .join('text')
+      .attr('class', 'barChartHorizontal__label')
       .attr('x', (datum) => xScale(datum.value))
       .attr('y', (datum, index) => yScale(index) + yScale.bandwidth() / 2)
       .attr('dy', '0.35em')
       .attr('dx', -4)
-      .text(datum => format(datum.value))
+      .text(datum => numbro(datum.value).format({ output: 'percent', mantissa: 2 }))
       .call(text => text.filter(datum => xScale(datum.value) - xScale(0) < 20)
       .attr('dx', +4)
       .attr('fill', (dark) ? 'white' : 'black')
