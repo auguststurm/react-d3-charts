@@ -35,6 +35,7 @@ const PieChart = ({dark, diameter, innerRadius, labelSize, data}) => {
     svg.selectAll('paths')
       .data(arcs)
       .join('path')
+      .attr('value', (datum) => datum.data.value)
       .attr('fill', datum => colorScale(datum.data.name))
       .attr('d', arc)
       .append('title')

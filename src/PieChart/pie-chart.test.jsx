@@ -33,4 +33,17 @@ describe('PieChart component', () => {
     expect(height).toEqual(componentProps.diameter.toString());
   });
 
+  it('svg displays path for all data values', () => {
+    let valuesAllMatch = true;
+    let datumValue, itemValue = '';
+    const items = $('path').toArray();
+    items.forEach((item, itemIndex) => {
+      datumValue = componentProps.data[itemIndex].value;
+      itemValue = $(item).attr('value');
+      if (datumValue != itemValue) { valuesAllMatch = false; }
+    });
+    expect(valuesAllMatch).toEqual(true);
+    expect(items.length).toEqual(componentProps.data.length);
+  });
+
 });
