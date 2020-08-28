@@ -13,6 +13,12 @@
 ```bash
 yarn add @auguststurm/react-d3-charts
 ```
+## Test Components
+
+
+```bash
+yarn test:components
+```
 
 ## Run Example
 

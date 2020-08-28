@@ -58,7 +58,8 @@ const BarChart = ({dark, width, height, margin, data}) => {
       })
       .attr('width', xScale.bandwidth())
       .attr('height', datum => yScale(0) - yScale(datum.value))
-      .attr('fill', (datum) => colorScale(datum.name));
+      .attr('fill', (datum) => colorScale(datum.name))
+      .attr('value', (datum) => datum.value);
 
   };
 

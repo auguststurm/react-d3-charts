@@ -23,6 +23,7 @@ const appComponentStates = {
   barChartHorizontal: {
     width: 850,
     barHeight: 16,
+    barPadding: 0.1,
     margin: {
       top: 30,
       right: 0,
@@ -32,7 +33,7 @@ const appComponentStates = {
     data: dataBarChart
   },
   pieChart: {
-    diameter: 300,
+    diameter: 550,
     innerRadius: 0.618,
     labelSize: 11,
     data: dataPieChart
