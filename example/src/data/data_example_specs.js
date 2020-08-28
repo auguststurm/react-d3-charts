@@ -33,7 +33,7 @@ const appComponentStates = {
     data: dataBarChart
   },
   pieChart: {
-    diameter: 300,
+    diameter: 550,
     innerRadius: 0.618,
     labelSize: 11,
     data: dataPieChart

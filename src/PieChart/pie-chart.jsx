@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import numbro from 'numbro';
 import './pie-chart.sass';
 
 // Source: https://observablehq.com/@d3/donut-chart
@@ -56,7 +57,7 @@ const PieChart = ({dark, diameter, innerRadius, labelSize, data}) => {
                       .attr('x', 0)
                       .attr('y', '0.7em')
                       .attr('fill-opacity', 0.7)
-                      .text(datum => datum.data.value)
+                      .text(datum => numbro(datum.data.value).format({ average: true, totalLength: 4 }))
                     );
 
   };
