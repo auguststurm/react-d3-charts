@@ -37,12 +37,14 @@ describe('BarChart component', () => {
   it('svg displays elements with all data values', () => {
     let valuesAllMatch = true;
     let datumValue, itemValue = '';
-    $('rect').toArray().forEach((item, itemIndex) => {
+    const items = $('rect').toArray();
+    items.forEach((item, itemIndex) => {
       datumValue = componentProps.data[itemIndex].value;
       itemValue = $(item).attr('value');
       if (datumValue != itemValue) { valuesAllMatch = false; }
     });
     expect(valuesAllMatch).toEqual(true);
+    expect(items.length).toEqual(componentProps.data.length);
   });
 
 });

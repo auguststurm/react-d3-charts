@@ -33,23 +33,27 @@ describe('BarChartHorizontal component', () => {
   it('svg displays elements with all data values', () => {
     let valuesAllMatch = true;
     let datumValue, itemValue = '';
-    $('rect').toArray().forEach((item, itemIndex) => {
+    const items = $('rect').toArray();
+    items.forEach((item, itemIndex) => {
       datumValue = componentProps.data[itemIndex].value;
       itemValue = $(item).attr('value');
       if (datumValue != itemValue) { valuesAllMatch = false; }
     });
     expect(valuesAllMatch).toEqual(true);
+    expect(items.length).toEqual(componentProps.data.length);
   });
 
   it('svg elements display value for each element', () => {
     let valuesAllMatch = true;
     let datumValue, itemValue = '';
-    $('.barChartHorizontal__label').toArray().forEach((text, textIndex) => {
+    const items = $('.barChartHorizontal__label');
+    items.toArray().forEach((text, textIndex) => {
       datumValue = numbro(componentProps.data[textIndex].value).format({ output: 'percent', mantissa: 2});
       itemValue = $(text).html();
       if (datumValue != itemValue) { valuesAllMatch = false; }
     });
     expect(valuesAllMatch).toEqual(true);
+    expect(items.length).toEqual(componentProps.data.length);
   });
 
 });
