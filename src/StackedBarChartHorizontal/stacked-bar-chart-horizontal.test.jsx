@@ -32,9 +32,7 @@ describe('StackedBarChartHorizontal component', () => {
 
   it('svg displays element for all data values', () => {
     const items = $('rect').toArray();
-    const itemDepthLimiter = 2; // 2 to exclude the 'name' and 'total' [other data] properties
-    const itemsDepthFactor = Object.keys(componentProps.data[0]).length - itemDepthLimiter;
-    expect(items.length).toEqual(componentProps.data.length * itemsDepthFactor);
+    expect(items.length).toEqual(componentProps.data.length * componentProps.dataKeys.length);
   });
 
 });
