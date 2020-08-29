@@ -8,6 +8,12 @@ import EventsTimeline from '.';
 describe('EventsTimeline component', () => {
 
   const componentProps = dataExampleSpecs.appComponentStates.eventsTimeline;
+  let allDatumItems = [];
+  componentProps.data.forEach((group) => {
+    group.events.forEach((event) => {
+      allDatumItems.push(event);
+    });
+  });
 
   let component, $;
   const element = document.createElement('div');
@@ -40,13 +46,6 @@ describe('EventsTimeline component', () => {
     let datumValue, itemValue = '';
     const items = $('.eventsTimeline__label');
 
-    let allDatumItems = [];
-    componentProps.data.forEach((group) => {
-      group.events.forEach((event) => {
-        allDatumItems.push(event);
-      });
-    });
-
     items.toArray().forEach((item, itemIndex) => {
       datumValue = allDatumItems[itemIndex].title;
       itemValue = $(item).html();
@@ -57,5 +56,22 @@ describe('EventsTimeline component', () => {
     expect(items.length).toEqual(allDatumItems.length);
   });
 
+  it('svg elements uses start and end times', () => {
+    let valuesAllMatch = true;
+    let datumStartValue, datumEndValue = '';
+    let itemStartValue, itemEndValue = '';
+    const items = $('.eventsTimeline__event');
+
+    items.toArray().forEach((item, itemIndex) => {
+      datumStartValue = allDatumItems[itemIndex].start;
+      datumEndValue = allDatumItems[itemIndex].end;
+      itemStartValue = $(item).attr('data-start');
+      itemEndValue = $(item).attr('data-end');
+      if (datumStartValue != itemStartValue) { valuesAllMatch = false; }
+      if (datumEndValue != itemEndValue) { valuesAllMatch = false; }
+    });
+
+    expect(valuesAllMatch).toEqual(true);
+  });
 
 });

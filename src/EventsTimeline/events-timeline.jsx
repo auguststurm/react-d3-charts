@@ -149,6 +149,8 @@ const EventsTimeline = ({
           .attr('y', event => yScale(event.groupTitle))
           .attr('width', event => xScale(moment(event.end, dateFormat).toDate()) - xScale(moment(event.start, dateFormat).toDate()))
           .attr('height', yScale.bandwidth())
+          .attr('data-start', event => event.start)
+          .attr('data-end', event => event.end)
           .on('mouseover', mouseover)
           .on('mousemove', mousemove)
           .on('mouseleave', mouseleave)
