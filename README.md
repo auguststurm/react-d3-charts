@@ -106,6 +106,7 @@ class Example extends Component {
           bottom: 20,
           left: 80
         }}
+        dataKeys={['<10', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '≥80']}
         data={dataStackedBarChart}
       />
 
@@ -119,6 +120,7 @@ class Example extends Component {
           bottom: 20,
           left: 35
         }}
+        dataKeys={['<10', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '≥80']}
         data={dataStackedBarChart}
       />
 

@@ -157,6 +157,7 @@ const stackedBarChartData =
 `[
   {
     "name": "CA",
+    "total": 38654206,
     "<10": 5038433,
     "10-19": 5170341,
     "20-29": 5809455,
@@ -165,8 +166,7 @@ const stackedBarChartData =
     "50-59": 5042094,
     "60-69": 3737461,
     "70-79": 2011678,
-    "≥80": 1311374,
-    "total": 38654206
+    "≥80": 1311374
   },
   ...
 ]`;
@@ -182,6 +182,7 @@ const stackedBarChartHorizontalMarkup =
     bottom: 20,
     left: 80
   }}
+  dataKeys={['<10', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '≥80']}
   data={dataStackedBarChart}
 />`;
 
@@ -196,6 +197,7 @@ const stackedBarChartMarkup =
     bottom: 20,
     left: 35
   }}
+  dataKeys={['<10', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '≥80']}
   data={dataStackedBarChart}
 />`;
 
