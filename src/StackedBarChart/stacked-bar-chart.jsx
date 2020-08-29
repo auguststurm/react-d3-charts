@@ -5,7 +5,7 @@ import './stacked-bar-chart.sass';
 
 // https://observablehq.com/@d3/stacked-bar-chart
 
-const StackedBarChart = ({dark, width, height, margin, data}) => {
+const StackedBarChart = ({dark, width, height, margin, dataKeys, data}) => {
 
   const chartRef = useRef(null);
 
@@ -17,7 +17,7 @@ const StackedBarChart = ({dark, width, height, margin, data}) => {
   });
 
   const series = d3.stack()
-                  .keys(["<10", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "≥80"])
+                  .keys(dataKeys)
                   (data)
                   .map(datum => (datum.forEach(value => value.key = datum.key), datum));
 

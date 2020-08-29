@@ -5,7 +5,7 @@ import './stacked-bar-chart-horizontal.sass';
 
 // https://observablehq.com/@d3/stacked-horizontal-bar-chart
 
-const StackedBarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
+const StackedBarChartHorizontal = ({dark, width, barHeight, margin, dataKeys, data}) => {
 
   const chartRef = useRef(null);
 
@@ -19,7 +19,7 @@ const StackedBarChartHorizontal = ({dark, width, barHeight, margin, data}) => {
   const height = data.length * barHeight + margin.top + margin.bottom;
 
   const series = d3.stack()
-                  .keys(["<10", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "≥80"])
+                  .keys(dataKeys)
                   (data)
                   .map(datum => (datum.forEach(value => value.key = datum.key), datum));
 

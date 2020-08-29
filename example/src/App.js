@@ -103,6 +103,7 @@ class App extends React.Component {
           width={this.state.stackedBarChartHorizontal.width}
           barHeight={this.state.stackedBarChartHorizontal.barHeight}
           margin={this.state.stackedBarChartHorizontal.margin}
+          dataKeys={this.state.stackedBarChartHorizontal.dataKeys}
           data={this.state.stackedBarChartHorizontal.data}
         />
         <Specs data={dataExampleSpecs.stackedBarChartData} markup={dataExampleSpecs.stackedBarChartHorizontalMarkup} />
@@ -114,6 +115,7 @@ class App extends React.Component {
           width={this.state.stackedBarChart.width}
           height={this.state.stackedBarChart.height}
           margin={this.state.stackedBarChart.margin}
+          dataKeys={this.state.stackedBarChart.dataKeys}
           data={this.state.stackedBarChart.data}
         />
         <Specs data={dataExampleSpecs.stackedBarChartData} markup={dataExampleSpecs.stackedBarChartMarkup} />
