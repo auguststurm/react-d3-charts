@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { dataExampleSpecs } from '../../example/src/data';
+
 import cheerio from 'cheerio';
 import numbro from 'numbro';
+
 import EventsTimeline from '.';
+import { dataExampleSpecs } from '../../example/src/data';
+
+// import Enzyme, { shallow } from 'enzyme';
+// import Adapter from 'enzyme-adapter-react-16';
+// Enzyme.configure({ adapter: new Adapter() });
+
+import { renderHook, act } from '@testing-library/react-hooks';
+
 
 describe('EventsTimeline component', () => {
 
@@ -73,5 +82,40 @@ describe('EventsTimeline component', () => {
 
     expect(valuesAllMatch).toEqual(true);
   });
+
+  it('should call setVizWidth method', () => {
+
+    // const wrapper = shallow(<EventsTimeline {...componentProps} />);
+    //
+    // console.log(wrapper)
+    //
+    // const instance = wrapper.instance();
+    //
+    // console.log(instance);
+    //
+    // const value = 1975;
+    //
+    // instance.setVizWidth(value);
+
+
+    const hookElement = document.createElement('div');
+
+    const props = {...componentProps, testing: true };
+
+    const { result } = renderHook((hookElement) => EventsTimeline({...props}), hookElement);
+
+
+    // console.log(result.current._owner);
+
+
+    act(() => {
+      // result.current.setVizWidth(1234);
+    });
+
+    // expect(result.current.setVizWidth).toBe(1234);
+
+
+
+  })
 
 });

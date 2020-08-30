@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import moment from 'moment';
-import ResizeOvserver from 'react-resize-observer';
+import ResizeObserver from 'react-resize-observer';
 
 import './events-timeline.sass';
 
@@ -22,7 +22,8 @@ const EventsTimeline = ({
                           showLeftAxis = true,
                           onLoadFitWidth = false,
                           onResizeFitWidth = false,
-                          handler = false
+                          handler = false,
+                          testing = false
                         }) => {
 
   const [vizWidth, setVizWidth] = useState(width);
@@ -32,7 +33,11 @@ const EventsTimeline = ({
 
   useEffect(() => {
 
-    if (onLoadFitWidth) { setVizWidth(containerRef.current.clientWidth); }
+    if (onLoadFitWidth) {
+      setVizWidth(containerRef.current.clientWidth);
+    } else {
+      setVizWidth(width);
+    }
 
     const svg = d3.select(chartRef.current);
     svg.selectAll('*').remove();
@@ -191,10 +196,13 @@ const EventsTimeline = ({
             .text(event => event.title);
     }
 
-    const tooltip = d3.select(chartRef.current.parentElement)
-                      .append('div')
-                      .attr('class', 'eventsTimeline__tooltip')
-                      .style('opacity', 0);
+    if (testing === false) {
+      const tooltip = d3.select(chartRef.current.parentElement)
+                        .append('div')
+                        .attr('class', 'eventsTimeline__tooltip')
+                        .style('opacity', 0);
+    }
+
 
   };
 
@@ -208,7 +216,7 @@ const EventsTimeline = ({
         height={height}
         ref={chartRef}
       />
-      <ResizeOvserver
+      <ResizeObserver
         onResize={(rect) => {
           setVizWidth(rect.width);
         }}
