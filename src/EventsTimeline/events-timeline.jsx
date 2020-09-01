@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 import moment from 'moment';
 import ResizeObserver from 'react-resize-observer';
@@ -30,6 +30,8 @@ const EventsTimeline = ({
 
   const containerRef = useRef(null);
   const chartRef = useRef(null);
+
+  // const testSetVizWidth = useCallback(() => setVizWidth(1234), [vizWidth]);
 
   useEffect(() => {
 
@@ -196,8 +198,10 @@ const EventsTimeline = ({
             .text(event => event.title);
     }
 
+    let tooltip;
+
     if (testing === false) {
-      const tooltip = d3.select(chartRef.current.parentElement)
+      tooltip = d3.select(chartRef.current.parentElement)
                         .append('div')
                         .attr('class', 'eventsTimeline__tooltip')
                         .style('opacity', 0);
@@ -227,3 +231,10 @@ const EventsTimeline = ({
 }
 
 export default EventsTimeline;
+
+
+// export function useSetVizWidth(value) {
+//
+//   const [vizWidth, setVizWidth] = useState(width);
+//
+// }
