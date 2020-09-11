@@ -83,39 +83,24 @@ describe('EventsTimeline component', () => {
     expect(valuesAllMatch).toEqual(true);
   });
 
-  it('should call setVizWidth method', () => {
-
-    // const wrapper = shallow(<EventsTimeline {...componentProps} />);
-    // console.log(wrapper)
-    // const instance = wrapper.instance();
-    // console.log(instance);
-    // const value = 1975;
-    // instance.setVizWidth(value);
-
-
-    // const hookElement = document.createElement('div');
-
-    // const wrapper = ({ children }) =>
-
-    // const { result } = renderHook((hookElement) => EventsTimeline({...props}), { hookElement });
-
-    const props = {...componentProps, testing: true };
-
-    const { result } = renderHook((hookElement) => EventsTimeline({...props}));
-
-
-    // console.log(result.current._owner.memoizedProps.callback().testSetVizWidth);
-
-    // console.log(result.current)
-
-    act(() => {
-      // result.current.setVizWidth(1234);
-    });
-
-    // expect(result.current.vizWidth).toBe(500);
-
-
-
-  })
+  // it('should call setVizWidth method', () => {
+  //   // const wrapper = shallow(<EventsTimeline {...componentProps} />);
+  //   // console.log(wrapper)
+  //   // const instance = wrapper.instance();
+  //   // console.log(instance);
+  //   // const value = 1975;
+  //   // instance.setVizWidth(value);
+  //   // const hookElement = document.createElement('div');
+  //   // const wrapper = ({ children }) =>
+  //   // const { result } = renderHook((hookElement) => EventsTimeline({...props}), { hookElement });
+  //   const props = {...componentProps, testing: true };
+  //   const { result } = renderHook((hookElement) => EventsTimeline({...props}));
+  //   // console.log(result.current._owner.memoizedProps.callback().testSetVizWidth);
+  //   // console.log(result.current)
+  //   act(() => {
+  //     // result.current.setVizWidth(1234);
+  //   })
+  //   // expect(result.current.vizWidth).toBe(500);
+  // });
 
 });
