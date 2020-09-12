@@ -45,18 +45,10 @@ const SankeyDiagram = ({
 
   });
 
-  // const color = (datum) => {
-  //   // const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-  //   // // const colorOutput = colorScale(datum.category === undefined ? datum.name : datum.category);
-  //   // const colorOutput = colorScale(datum.category)
-  //   // // console.log(datum.category);
-  //   // console.log(colorOutput)
-  //   // return colorOutput;
-  //   const color = d3.scaleOrdinal(d3.schemeCategory10);
-  //   return color(datum.category === undefined ? datum.name : datum.category);
-  // };
-
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const color = (datum) => {
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    return colorScale(('category' in datum) ? datum.category : datum.name);
+  }
 
   const format = (value) => {
     const format = d3.format(",.0f");
@@ -79,18 +71,7 @@ const SankeyDiagram = ({
 
     const { nodes, links } = SankeyObjects(data);
 
-    svg.append('g')
-      .attr('stroke', (dark) ? 'silver' : 'black')
-      .selectAll('rect')
-      .data(nodes)
-      .join('rect')
-      .attr('x', datum => datum.x0)
-      .attr('y', datum => datum.y0)
-      .attr('height', datum => datum.y1 - datum.y0)
-      .attr('width', datum => datum.x1 - datum.x0)
-      .attr('fill', datum => color(datum))
-      .append('title')
-      .text(datum => `${datum.name}\n${format(datum.value)}`)
+
 
     const link = svg.append('g')
                   .attr('fill', 'none')
@@ -99,6 +80,7 @@ const SankeyDiagram = ({
                   .data(links)
                   .join('g')
                   .style('mix-blend-mode', 'multiply');
+
 
     if (edgeColor === "path") {
       const gradient = link.append("linearGradient")
@@ -116,13 +98,15 @@ const SankeyDiagram = ({
           .attr("stop-color", d => color(d.target));
     }
 
+
     link.append('path')
       .attr('d', sankeyLinkHorizontal())
-
-      .attr('stroke', datum => edgeColor === 'none' ? '#aaa'
+      .attr('stroke', datum => {
+        return edgeColor === 'none' ? '#aaa'
             : edgeColor === 'path' ? datum.index
             : edgeColor === 'input' ? color(datum.source)
-            : color(datum.target))
+            : color(datum.target)
+          })
       .attr('stroke-width', datum => Math.max(1, datum.width))
 
     link.append('title')
@@ -140,6 +124,19 @@ const SankeyDiagram = ({
       .attr('text-anchor', datum => datum.x0 < width / 2 ? 'start' : 'end')
       .attr('fill', (dark) ? 'white' : 'black')
       .text(datum => datum.name);
+
+    svg.append('g')
+      .attr('stroke', (dark) ? 'silver' : 'black')
+      .selectAll('rect')
+      .data(nodes)
+      .join('rect')
+      .attr('x', datum => datum.x0)
+      .attr('y', datum => datum.y0)
+      .attr('height', datum => datum.y1 - datum.y0)
+      .attr('width', datum => datum.x1 - datum.x0)
+      .attr('fill', color)
+      .append('title')
+      .text(datum => `${datum.name}\n${format(datum.value)}`)
 
   }
 
