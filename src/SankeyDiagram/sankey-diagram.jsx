@@ -23,7 +23,7 @@ const SankeyDiagram = ({
   data,
   onLoadFitWidth = false,
   align = 'justify',   // left, right, center, justify
-  edgeColor = 'input'    // input, output, path, none
+  edgeColor = 'path'    // input, output, path, none
 }) => {
 
   const [vizWidth, setVizWidth] = useState(width);
@@ -47,8 +47,34 @@ const SankeyDiagram = ({
 
   const color = (datum) => {
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-    return colorScale(('category' in datum) ? datum.category : datum.name);
+    // const colorValue = colorScale(('category' in datum) ? datum.category : datum.name);
+    const colorValue = colorScale(datum.category);
+
+    if ('category' in datum) {
+      console.log('----------cat', datum.category);
+    } else {
+      console.log('name', datum.name)
+    }
+
+    console.log(datum);
+    console.log(colorValue);
+
+    return colorValue;
   }
+
+  // const cats = data.nodes.map(datum => datum.name);
+  //
+  // console.log(cats)
+  //
+  //
+  // const color = d3.scaleOrdinal()
+  //                 .domain(data.nodes.map(datum => datum.name))
+  //                 .range(d3.schemeCategory10);
+  //                 // .range(d3.schemeSpectral[11])
+  //                 // .range(d3.schemeSet1)
+  //                 // .unknown('#ccc');
+
+
 
   const format = (value) => {
     const format = d3.format(",.0f");
@@ -83,19 +109,20 @@ const SankeyDiagram = ({
 
 
     if (edgeColor === "path") {
+
       const gradient = link.append("linearGradient")
-          .attr("id", d => Math.random())
-          .attr("gradientUnits", "userSpaceOnUse")
-          .attr("x1", d => d.source.x1)
-          .attr("x2", d => d.target.x0);
+        .attr("id", datum => datum.uid =`id_${Math.ceil(Math.random() * 1000000000)}`)
+        .attr("gradientUnits", "userSpaceOnUse")
+        .attr("x1", datum => datum.source.x1)
+        .attr("x2", datum => datum.target.x0);
 
       gradient.append("stop")
           .attr("offset", "0%")
-          .attr("stop-color", d => color(d.source));
+          .attr("stop-color", datum => color(datum.source));
 
       gradient.append("stop")
           .attr("offset", "100%")
-          .attr("stop-color", d => color(d.target));
+          .attr("stop-color", datum => color(datum.target));
     }
 
 
@@ -103,7 +130,7 @@ const SankeyDiagram = ({
       .attr('d', sankeyLinkHorizontal())
       .attr('stroke', datum => {
         return edgeColor === 'none' ? '#aaa'
-            : edgeColor === 'path' ? datum.index
+            : edgeColor === 'path' ? datum.uid
             : edgeColor === 'input' ? color(datum.source)
             : color(datum.target)
           })
@@ -134,7 +161,10 @@ const SankeyDiagram = ({
       .attr('y', datum => datum.y0)
       .attr('height', datum => datum.y1 - datum.y0)
       .attr('width', datum => datum.x1 - datum.x0)
-      .attr('fill', color)
+      .attr('fill', datum => {
+        // console.log(datum);
+        return color(datum);
+      })
       .append('title')
       .text(datum => `${datum.name}\n${format(datum.value)}`)
 
