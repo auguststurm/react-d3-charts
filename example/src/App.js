@@ -14,7 +14,8 @@ import {
   MultiLineChart,
   StackedBarChart,
   StackedBarChartHorizontal,
-  EventsTimeline
+  EventsTimeline,
+  SankeyDiagram
 } from '@auguststurm/react-d3-charts';
 
 
@@ -96,6 +97,18 @@ class App extends React.Component {
         />
         <Specs data={dataExampleSpecs.eventsTimelineData} markup={dataExampleSpecs.eventsTimelineMarkup} handler={'Clicking an event will return the data for that event.'} />
         <hr />
+
+        <h2>Sankey Diagram</h2>
+        <SankeyDiagram
+          dark={true}
+          width={this.state.sankeyDiagram.width}
+          height={this.state.sankeyDiagram.height}
+          margin={this.state.sankeyDiagram.margin}
+          data={this.state.sankeyDiagram.data}
+          onResizeFitWidth={true}
+          onLoadFitWidth={true}
+        />
+
 
         <h2>Stacked Bar Chart Horizontal</h2>
         <StackedBarChartHorizontal

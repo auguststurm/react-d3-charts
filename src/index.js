@@ -9,6 +9,7 @@ import MultiLineChart from './MultiLineChart';
 import StackedBarChart from './StackedBarChart';
 import StackedBarChartHorizontal from './StackedBarChartHorizontal';
 import EventsTimeline from './EventsTimeline';
+import SankeyDiagram from './SankeyDiagram';
 
 export {
   BarChart,
@@ -19,5 +20,6 @@ export {
   MultiLineChart,
   StackedBarChart,
   StackedBarChartHorizontal,
-  EventsTimeline
+  EventsTimeline,
+  SankeyDiagram
 }

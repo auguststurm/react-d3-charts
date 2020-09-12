@@ -5,7 +5,8 @@ import {
   dataHexbinChart,
   dataMultiLineChart,
   dataStackedBarChart,
-  dataEventsTimeline
+  dataEventsTimeline,
+  dataSankeyDiagram
 } from '.';
 
 const appComponentStates = {
@@ -109,6 +110,17 @@ const appComponentStates = {
     },
     dateFormat: 'YYYY-MM-DD',
     data: dataEventsTimeline
+  },
+  sankeyDiagram: {
+    width: 954,
+    height: 600,
+    margin: {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    },
+    data: dataSankeyDiagram
   }
 }
 
@@ -356,6 +368,7 @@ const barChartMarkup =
 
 
 export default {
+
   eventsTimelineData,
   eventsTimelineMarkup,
   stackedBarChartData,

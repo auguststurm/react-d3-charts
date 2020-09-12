@@ -5,6 +5,8 @@ import dataHexbinChart from './data_hexbin.js';
 import dataMultiLineChart from './data_multiline.js';
 import dataStackedBarChart from './data_stackedBar.js';
 import dataEventsTimeline from './data_eventsTimeline.js';
+import dataSankeyDiagram from './data_sankey.js';
+//
 import dataExampleSpecs from './data_example_specs.js';
 
 export {
@@ -15,5 +17,6 @@ export {
   dataMultiLineChart,
   dataStackedBarChart,
   dataEventsTimeline,
+  dataSankeyDiagram,
   dataExampleSpecs
 }
