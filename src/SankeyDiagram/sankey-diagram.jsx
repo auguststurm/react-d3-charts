@@ -23,7 +23,7 @@ const SankeyDiagram = ({
   data,
   onLoadFitWidth = false,
   align = 'justify',   // left, right, center, justify
-  edgeColor = 'path'    // input, output, path, none
+  edgeColor = 'input'    // input, output, path, none
 }) => {
 
   const [vizWidth, setVizWidth] = useState(width);
