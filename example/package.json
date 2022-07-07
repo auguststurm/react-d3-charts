@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@auguststurm/react-d3-charts": "link:..",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts"
